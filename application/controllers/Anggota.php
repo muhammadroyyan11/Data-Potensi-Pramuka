@@ -26,7 +26,6 @@ class Anggota extends CI_Controller
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
-        $this->form_validation->set_rules('role', 'Role', 'required|trim');
 
         if ($mode == 'add') {
             $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]|alpha_numeric');
@@ -57,31 +56,32 @@ class Anggota extends CI_Controller
             $this->template->load('template', 'anggota/add', $data);
         } else {
             $input = $this->input->post(null, true);
+            var_dump($input);
+            // $data_anggota = [
+            //     'nama_anggota' => $input['nama'],
+            //     'kwaracab' => $input['kwaracab']
+            // ];
 
-            $data_anggota = [
-                'nama' => $input['nama'],
-            ];
+            // $return_id =  $this->anggota->insert($data_anggota, 'anggota');
 
-            $return_id =  $this->anggota->insert($data_anggota, 'anggota');
+            // $input_data = [
+            //     'nama'          => $input['nama'],
+            //     'username'      => $input['username'],
+            //     'email'         => $input['email'],
+            //     'no_telp'       => $input['no_telp'],
+            //     'role'          => 3,
+            //     'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
+            //     'foto'          => 'user.png',
+            //     'anggota_id'    => $return_id
+            // ];
 
-            $input_data = [
-                'nama'          => $input['nama'],
-                'username'      => $input['username'],
-                'email'         => $input['email'],
-                'no_telp'       => $input['no_telp'],
-                'role'          => 3,
-                'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
-                'foto'          => 'user.png',
-                'anggota_id'    => $return_id
-            ];
-
-            if ($this->base_model->insert('user', $input_data)) {
-                set_pesan('data berhasil disimpan.');
-                redirect('user');
-            } else {
-                set_pesan('data gagal disimpan', false);
-                redirect('user/add');
-            }
+            // if ($this->base_model->insert('user', $input_data)) {
+            //     set_pesan('data berhasil disimpan.');
+            //     redirect('user');
+            // } else {
+            //     set_pesan('data gagal disimpan', false);
+            //     redirect('user/add');
+            // }
         }
     }
 

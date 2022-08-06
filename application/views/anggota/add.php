@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <select name="role" id="" class="form-control" disabled>
+                                        <select name="kwaracab" id="" class="form-control" disabled>
                                             <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
                                         </select>
                                         <div class="form-control-position">
@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <select class="select2 form-control" multiple="multiple">
+                                        <select class="select2 form-control" name="potensi[]" multiple="multiple">
                                             <?php foreach ($potensi as $key => $data) { ?>
                                                 <option value="<?= $data->id_potensi?>"><?= $data->nama_potensi ?></option>
                                             <?php } ?>
