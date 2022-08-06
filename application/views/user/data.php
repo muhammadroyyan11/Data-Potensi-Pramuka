@@ -30,13 +30,14 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($users) {
-                                        $no = 1;
-                                        foreach ($users as $key => $data) { ?>
+
+                                    $no = 1;
+                                    foreach ($users as $key => $data) {
+                                        if ($data['role'] != 1) { ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td>
-                                                <a href="<?= base_url('user/toggle/') . $data['id_user'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
+                                                    <a href="<?= base_url('user/toggle/') . $data['id_user'] ?>" class="btn btn-circle btn-sm <?= $data['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $data['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
                                                 </td>
                                                 <td><?= $data['nama']; ?></td>
                                                 <td><?= $data['username']; ?></td>
@@ -45,11 +46,13 @@
                                                 <td>
                                                     <?php if ($data['role'] == 2) { ?>
                                                         Admin
+                                                    <?php } elseif ($data['role'] == 3) { ?>
+                                                        Anggota
                                                     <?php } ?>
                                                 </td>
                                                 <td><?= $data['nama_wilayah']; ?></td>
                                                 <td>
-                                                    
+
                                                     <a href="<?= base_url('user/edit/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
                                                     <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('user/delete/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
                                                 </td>

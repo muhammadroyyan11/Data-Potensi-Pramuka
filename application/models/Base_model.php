@@ -59,6 +59,7 @@ class Base_model extends CI_Model
     {
         $this->db->join('wilayah', 'wilayah.id_wilayah = user.wilayah');
         $this->db->where('id_user !=', $id);
+        $this->db->order_by('role', 'ASC');
         return $this->db->get('user')->result_array();
     }
 
