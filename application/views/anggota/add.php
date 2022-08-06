@@ -1,7 +1,7 @@
 <div class="col-md-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Tambah Data User</h4>
+            <h4 class="card-title">Tambah Data Anggota Potensi <?= $row->nama_wilayah ?></h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -112,36 +112,28 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <select name="wilayah" id="" class="form-control">
-                                            <option value="null" readonly>-- Silahkan Pilih --</option>
-                                            <?php foreach ($wilayah as $key => $data) { ?>
-                                                <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
-                                            <?php } ?>
+                                        <select name="role" id="" class="form-control" disabled>
+                                            <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
                                         </select>
                                         <div class="form-control-position">
                                             <i class="feather icon-map-pin"></i>
                                         </div>
                                     </div>
-                                    <small style="color: red;">Kosongkan jika bukan admin wilayah</small>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
                                 <div class="col-md-4">
-                                    <span>Role</span>
+                                    <span>Potensi</span>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <select name="role" id="" class="form-control">
-                                            <option value="" readonly>-- Silahkan Pilih --</option>
-                                            <option value="1">Super Admin</option>
-                                            <option value="2">Admin Wilayah</option>
-                                            <option value="3">Anggota</option>
+                                        <select class="select2 form-control" multiple="multiple">
+                                            <?php foreach ($potensi as $key => $data) { ?>
+                                                <option value="<?= $data->id_potensi?>"><?= $data->nama_potensi ?></option>
+                                            <?php } ?>
                                         </select>
-                                        <div class="form-control-position">
-                                            <i class="feather icon-users"></i>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

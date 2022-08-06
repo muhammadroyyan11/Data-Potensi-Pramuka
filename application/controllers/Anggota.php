@@ -10,14 +10,15 @@ class Anggota extends CI_Controller
         $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Anggota_model', 'anggota');
+        $this->load->model('base_model', 'base');
     }
 
     public function index()
     {
         $data['title'] = "Data Anggota";
-        $data['users'] = $this->base_model->getWhere(userdata('potensi'))->result_array();
+        $data['users'] = $this->base_model->getWhere(1)->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
-        // var_dump(userdata('potensi'));
+        // var_dump(userdata('wilayah'));
         $this->template->load('template', 'anggota/data', $data);
     }
 
@@ -51,8 +52,8 @@ class Anggota extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Tambah Anggota";
-            $data['wilayah'] = $this->base_model->get('wilayah')->result();
-            // $data['potensi'] = $this->base_model->get('potensi')->result();
+            $data['row'] = $this->base->getWilayahById(userdata('wilayah'))->row();
+            $data['potensi'] = $this->base->get('potensi')->result();
             $this->template->load('template', 'anggota/add', $data);
         } else {
             $input = $this->input->post(null, true);

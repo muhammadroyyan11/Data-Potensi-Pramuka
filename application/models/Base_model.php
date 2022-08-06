@@ -16,9 +16,13 @@ class Base_model extends CI_Model
     public function getWhere($where)
     {
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->where('potensi', $where);
+        $this->db->from('potensi_user');
+        // $this->db->where('potensi', $where);
+        // $this->db->where('role', 3);
+        $this->db->join('user','user.id_user = potensi_user.user_id');
+        $this->db->join('potensi','potensi.id_potensi = potensi_user.potensi_id');
         $this->db->where('role', 3);
+        $this->db->where('potensi_id', $where);
         return $this->db->get();
     }
 
@@ -57,6 +61,7 @@ class Base_model extends CI_Model
          * tidak ingin menampilkan data user yang digunakan, 
          * pada managemen data user
          */
+        $this->db->join('wilayah','wilayah.id_wilayah = user.wilayah');
         $this->db->where('id_user !=', $id);
         return $this->db->get('user')->result_array();
     }
@@ -78,13 +83,12 @@ class Base_model extends CI_Model
         return $query;
     }
 
-    public function getCash($table, $order , $where)
+    public function getWilayahById($where)
     {
        // $tanggal = date('Y-m-d');
        $this->db->select('*');
-       $this->db->from($table);
-       $this->db->where($where);
-       $this->db->order_by($order, 'DESC');
+       $this->db->from('wilayah');
+       $this->db->where('id_wilayah', $where);
        $query = $this->db->get();
        return $query;
     }

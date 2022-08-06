@@ -53,6 +53,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/assets/css/style.css">
     <!-- END: Custom CSS-->
 
+    <!-- SELECT 2  -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/app-assets/vendors/css/forms/select/select2.min.css">
 </head>
 <!-- END: Head-->
 
@@ -266,6 +268,8 @@
     <script src="<?= base_url() ?>assets/app-assets/vendors/js/calendar/extensions/daygrid.min.js"></script>
     <script src="<?= base_url() ?>assets/app-assets/vendors/js/calendar/extensions/timegrid.min.js"></script>
     <script src="<?= base_url() ?>assets/app-assets/vendors/js/calendar/extensions/interactions.min.js"></script>
+    <script src="<?= base_url() ?>assets/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="<?= base_url() ?>assets/app-assets/js/scripts/forms/select/form-select2.js"></script>
     <!-- <script src="<?= base_url() ?>assets/app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
 
     <script>
@@ -293,6 +297,12 @@
             var absenNeeded = '<?= json_encode($this->session->absen_needed) ?>';
             <?php $this->session->sess_unset('absen_needed') ?>
         <?php endif; ?>
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
     </script>
 
     <script type="text/javascript">
