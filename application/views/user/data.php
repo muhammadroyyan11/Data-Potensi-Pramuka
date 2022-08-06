@@ -47,6 +47,7 @@
                                                         Admin
                                                     <?php } ?>
                                                 </td>
+                                                <td><?= $data['no_telp']; ?></td>
                                                 <td>
                                                     
                                                     <a href="<?= base_url('user/edit/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>

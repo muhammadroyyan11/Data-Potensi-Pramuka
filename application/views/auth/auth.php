@@ -32,7 +32,7 @@
                                     </div>
                                     <label for="user-password">Password</label>
                                 </fieldset>
-                                <a href="<?= site_url('auth/register') ?>" class="btn btn-outline-primary float-left btn-inline">Register</a>
+                                <!-- <a href="<?= site_url('auth/register') ?>" class="btn btn-outline-primary float-left btn-inline">Register</a> -->
                                 <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>
                                 <?= form_close(); ?>
                             </div>
