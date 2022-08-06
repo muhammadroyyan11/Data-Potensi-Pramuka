@@ -24,7 +24,6 @@ class Wilayah extends CI_Controller {
         parent::__construct();
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
-        // // $this->load->model('Auth_model', 'auth');
         $this->load->model('Wilayah_model', 'wilayah');
     }
 

@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        // var_dump(userdata('wilayah'));
         $data['title'] = "Dashboard";
         $this->template->load('template', 'dashboard/dashboard', $data);
     }
