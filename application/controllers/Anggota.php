@@ -9,13 +9,15 @@ class Anggota extends CI_Controller
         cek_login();
         $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');
+        $this->load->model('Anggota_model', 'anggota');
     }
 
     public function index()
     {
-        $data['title'] = "User Management";
-        $data['users'] = $this->base_model->getUsers(userdata('id_user'));
+        $data['title'] = "Data Anggota";
+        $data['users'] = $this->base_model->getWhere(userdata('potensi'))->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
+        // var_dump(userdata('potensi'));
         $this->template->load('template', 'anggota/data', $data);
     }
 
@@ -48,20 +50,28 @@ class Anggota extends CI_Controller
         $this->_validasi('add');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = "Tambah User";
+            $data['title'] = "Tambah Anggota";
             $data['wilayah'] = $this->base_model->get('wilayah')->result();
+            // $data['potensi'] = $this->base_model->get('potensi')->result();
             $this->template->load('template', 'anggota/add', $data);
         } else {
             $input = $this->input->post(null, true);
+
+            $data_anggota = [
+                'nama' => $input['nama'],
+            ];
+
+            $return_id =  $this->anggota->insert($data_anggota, 'anggota');
+
             $input_data = [
                 'nama'          => $input['nama'],
                 'username'      => $input['username'],
                 'email'         => $input['email'],
                 'no_telp'       => $input['no_telp'],
-                'role'          => $input['role'],
-                'wilayah'       => $input['wilayah'],
+                'role'          => 3,
                 'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
-                'foto'          => 'user.png'
+                'foto'          => 'user.png',
+                'anggota_id'    => $return_id
             ];
 
             if ($this->base_model->insert('user', $input_data)) {

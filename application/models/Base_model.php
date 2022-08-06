@@ -13,6 +13,15 @@ class Base_model extends CI_Model
         }
     }
 
+    public function getWhere($where)
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('potensi', $where);
+        $this->db->where('role', 3);
+        return $this->db->get();
+    }
+
     public function joinCategory($order,$where){
         $this->db->select('*');
         $this->db->from('cash_balance');
