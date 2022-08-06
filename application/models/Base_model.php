@@ -21,7 +21,7 @@ class Base_model extends CI_Model
         $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
         $this->db->where('role', 3);
         if ($where != null) {
-            $this->db->where('potensi_id', $where);
+            $this->db->where('wilayah', $where);
         }
         return $this->db->get();
     }

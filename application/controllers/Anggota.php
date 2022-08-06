@@ -16,7 +16,7 @@ class Anggota extends CI_Controller
     public function index()
     {
         $data['title'] = "Data Anggota";
-        $data['users'] = $this->base_model->getWhere()->result_array();
+        $data['users'] = $this->base_model->getWhere(userdata('wilayah'))->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
         // var_dump(userdata('wilayah'));
         $this->template->load('template', 'anggota/data', $data);
@@ -57,7 +57,7 @@ class Anggota extends CI_Controller
         } else {
             $input = $this->input->post(null, true);
 
-            // var_dump($input);
+            var_dump($input);
 
             $data_anggota = [
                 'nama_anggota' => $input['nama'],
@@ -74,6 +74,7 @@ class Anggota extends CI_Controller
                 'role'          => 3,
                 'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
                 'foto'          => 'user.png',
+                'wilayah'       => $input['kwarcab'],
                 'anggota_id'    => $return_id
             ];
 
@@ -96,14 +97,6 @@ class Anggota extends CI_Controller
             }
 
             redirect('anggota');
-
-            // if ($this->base_model->insert('user', $input_data)) {
-            //     set_pesan('data berhasil disimpan.');
-            //     redirect('user');
-            // } else {
-            //     set_pesan('data gagal disimpan', false);
-            //     redirect('user/add');
-            // }
         }
     }
 
