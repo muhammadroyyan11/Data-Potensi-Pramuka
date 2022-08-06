@@ -16,7 +16,7 @@ class Anggota extends CI_Controller
     public function index()
     {
         $data['title'] = "Data Anggota";
-        $data['users'] = $this->base_model->getWhere(1)->result_array();
+        $data['users'] = $this->base_model->getWhere()->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
         // var_dump(userdata('wilayah'));
         $this->template->load('template', 'anggota/data', $data);
@@ -56,24 +56,46 @@ class Anggota extends CI_Controller
             $this->template->load('template', 'anggota/add', $data);
         } else {
             $input = $this->input->post(null, true);
-            var_dump($input);
-            // $data_anggota = [
-            //     'nama_anggota' => $input['nama'],
-            //     'kwaracab' => $input['kwaracab']
-            // ];
 
-            // $return_id =  $this->anggota->insert($data_anggota, 'anggota');
+            // var_dump($input);
 
-            // $input_data = [
-            //     'nama'          => $input['nama'],
-            //     'username'      => $input['username'],
-            //     'email'         => $input['email'],
-            //     'no_telp'       => $input['no_telp'],
-            //     'role'          => 3,
-            //     'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
-            //     'foto'          => 'user.png',
-            //     'anggota_id'    => $return_id
-            // ];
+            $data_anggota = [
+                'nama_anggota' => $input['nama'],
+                'kwarcab' => $input['kwarcab']
+            ];
+
+            $return_id =  $this->anggota->insert($data_anggota, 'anggota');
+
+            $input_data = [
+                'nama'          => $input['nama'],
+                'username'      => $input['username'],
+                'email'         => $input['email'],
+                'no_telp'       => $input['no_telp'],
+                'role'          => 3,
+                'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
+                'foto'          => 'user.png',
+                'anggota_id'    => $return_id
+            ];
+
+            $return_user =  $this->anggota->insert($input_data, 'user');
+
+            $itung = count($input['potensi']);
+
+            for ($i = 0; $i < $itung; $i++) {
+                $potensi[$i] = array(
+                    'user_id' => $return_user,
+                    'potensi_id' => $this->input->post('potensi[' . $i . ']'),
+                );
+                $this->anggota->insert($potensi[$i], 'potensi_user');
+            }
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data berhasil disimpan');
+            } else {
+                set_pesan('Terjadi kesalahan saat menympan data', false);
+            }
+
+            redirect('anggota');
 
             // if ($this->base_model->insert('user', $input_data)) {
             //     set_pesan('data berhasil disimpan.');

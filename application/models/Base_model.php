@@ -13,36 +13,38 @@ class Base_model extends CI_Model
         }
     }
 
-    public function getWhere($where)
+    public function getWhere($where = null)
     {
         $this->db->select('*');
         $this->db->from('potensi_user');
-        // $this->db->where('potensi', $where);
-        // $this->db->where('role', 3);
-        $this->db->join('user','user.id_user = potensi_user.user_id');
-        $this->db->join('potensi','potensi.id_potensi = potensi_user.potensi_id');
+        $this->db->join('user', 'user.id_user = potensi_user.user_id');
+        $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
         $this->db->where('role', 3);
-        $this->db->where('potensi_id', $where);
+        if ($where != null) {
+            $this->db->where('potensi_id', $where);
+        }
         return $this->db->get();
     }
 
-    public function joinCategory($order,$where){
+    public function joinCategory($order, $where)
+    {
         $this->db->select('*');
         $this->db->from('cash_balance');
-        $this->db->join('categori','categori.id_categori = cash_balance.category');
-        $this->db->order_by($order, 'DESC');   
-        $this->db->where($where);   
+        $this->db->join('categori', 'categori.id_categori = cash_balance.category');
+        $this->db->order_by($order, 'DESC');
+        $this->db->where($where);
         $query = $this->db->get();
         return $query;
-     }
+    }
 
-     public function joinCategory2($order, $where, $range = null){
+    public function joinCategory2($order, $where, $range = null)
+    {
         $this->db->select('*');
         $this->db->from('cash_balance');
-        $this->db->join('categori','categori.id_categori = cash_balance.category');
-        $this->db->join('user','user.id_user = cash_balance.id_user');
-        $this->db->order_by($order, 'DESC');   
-        $this->db->where($where);   
+        $this->db->join('categori', 'categori.id_categori = cash_balance.category');
+        $this->db->join('user', 'user.id_user = cash_balance.id_user');
+        $this->db->order_by($order, 'DESC');
+        $this->db->where($where);
 
         if ($range != null) {
             $this->db->where('date' . ' >=', $range['mulai']);
@@ -51,7 +53,7 @@ class Base_model extends CI_Model
         // return $this->db->get('barang_masuk bm')->result_array();
         $query = $this->db->get()->result_array();
         return $query;
-     }
+    }
 
     public function getUsers($id)
     {
@@ -61,7 +63,7 @@ class Base_model extends CI_Model
          * tidak ingin menampilkan data user yang digunakan, 
          * pada managemen data user
          */
-        $this->db->join('wilayah','wilayah.id_wilayah = user.wilayah');
+        $this->db->join('wilayah', 'wilayah.id_wilayah = user.wilayah');
         $this->db->where('id_user !=', $id);
         return $this->db->get('user')->result_array();
     }
@@ -85,15 +87,15 @@ class Base_model extends CI_Model
 
     public function getWilayahById($where)
     {
-       // $tanggal = date('Y-m-d');
-       $this->db->select('*');
-       $this->db->from('wilayah');
-       $this->db->where('id_wilayah', $where);
-       $query = $this->db->get();
-       return $query;
+        // $tanggal = date('Y-m-d');
+        $this->db->select('*');
+        $this->db->from('wilayah');
+        $this->db->where('id_wilayah', $where);
+        $query = $this->db->get();
+        return $query;
     }
 
-    public function get_uang($table, $order , $where)
+    public function get_uang($table, $order, $where)
     {
         // $tanggal = date('Y-m-d');
         $this->db->select('*');

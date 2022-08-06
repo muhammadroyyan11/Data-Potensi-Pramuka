@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <select name="kwaracab" id="" class="form-control" disabled>
+                                        <select name="kwarcab" id="" class="form-control">
                                             <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
                                         </select>
                                         <div class="form-control-position">

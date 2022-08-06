@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">
+                    <?= $this->session->flashdata('pesan'); ?>
                         <div class="table-responsive">
                             <table class="table zero-configuration">
                                 <thead>
