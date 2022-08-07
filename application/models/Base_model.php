@@ -26,35 +26,6 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
-    public function joinCategory($order, $where)
-    {
-        $this->db->select('*');
-        $this->db->from('cash_balance');
-        $this->db->join('categori', 'categori.id_categori = cash_balance.category');
-        $this->db->order_by($order, 'DESC');
-        $this->db->where($where);
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function joinCategory2($order, $where, $range = null)
-    {
-        $this->db->select('*');
-        $this->db->from('cash_balance');
-        $this->db->join('categori', 'categori.id_categori = cash_balance.category');
-        $this->db->join('user', 'user.id_user = cash_balance.id_user');
-        $this->db->order_by($order, 'DESC');
-        $this->db->where($where);
-
-        if ($range != null) {
-            $this->db->where('date' . ' >=', $range['mulai']);
-            $this->db->where('date' . ' <=', $range['akhir']);
-        }
-        // return $this->db->get('barang_masuk bm')->result_array();
-        $query = $this->db->get()->result_array();
-        return $query;
-    }
-
     public function getUsers($id)
     {
         $this->db->join('wilayah', 'wilayah.id_wilayah = user.wilayah');
@@ -70,34 +41,12 @@ class Base_model extends CI_Model
         return $sql;
     }
 
-    public function getTotal()
-    {
-        $login = $this->session->userdata('id_user');
-        $this->db->select('*');
-        $this->db->from('cash_balance');
-        // $this->db->where('id_user', $login);
-        $query = $this->db->get();
-        return $query;
-    }
-
     public function getWilayahById($where)
     {
         // $tanggal = date('Y-m-d');
         $this->db->select('*');
         $this->db->from('wilayah');
         $this->db->where('id_wilayah', $where);
-        $query = $this->db->get();
-        return $query;
-    }
-
-    public function get_uang($table, $order, $where)
-    {
-        // $tanggal = date('Y-m-d');
-        $this->db->select('*');
-        $this->db->from($table);
-        $this->db->where($where);
-        $this->db->order_by($order, 'DESC');
-        $this->db->limit(5);
         $query = $this->db->get();
         return $query;
     }
@@ -109,6 +58,7 @@ class Base_model extends CI_Model
         $sql = $this->db->get($table);
         return $sql;
     }
+
     public function get_group_id($table, $group_by)
     {
         $this->db->group_by($group_by);
@@ -130,43 +80,7 @@ class Base_model extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
-    public function get_join()
-    {
-        $this->db->select('*');
-        $this->db->from('cash_balance');
-        $this->db->join('user', 'user.id_user = cash_balance.id_user');
-        // $this->db->order_by($order, $az);
-        $sql = $this->db->get();
-        return $sql;
-    }
-    public function get_join2()
-    {
-        $login = $this->session->userdata('id_user');
-        $this->db->select('user.id, onlineform.date, onlineform.day, onlineform.in1, 
-        onlineform.out1, onlineform.in2, onlineform.out2');
-        $this->db->from('user');
-        $this->db->join('cash_balance', 'cash_balace.id = user.id');
-        $this->db->where('id_user', $login);
-        // $this->db->order_by($order, $az);
-        $sql = $this->db->get();
-        return $sql;
-    }
-    public function join_multiple($table, $join, $pq, $join1, $pq1, $order, $az)
-    {
-        $this->db->select('*');
-        $this->db->from($table);
-        $this->db->join($join, $pq);
-        $this->db->join($join1, $pq1);
-        $this->db->order_by($order, $az);
-        $sql = $this->db->get();
-        return $sql;
-    }
-    public function get_id($table, $where)
-    {
-        $this->db->where($where);
-        $sql = $this->db->get($table);
-        return $sql;
-    }
+
     public function fetch_data($table, $field, $num, $offset)
     {
         empty($offset) ? $offset = 0 : $offset;
