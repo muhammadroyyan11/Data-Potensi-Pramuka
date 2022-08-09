@@ -61,13 +61,12 @@ class Laporan extends CI_Controller
             $post['lampiran'] = $this->upload->data('file_name');
             $this->laporan->add($post);
             if ($this->db->affected_rows() > 0) {
-                set_pesan('succes', 'Data Berhasil Dismpan');
+                set_pesan('Data Berhasil Dismpan');
             }
             var_dump($post);
             redirect('laporan');
         } else {
-            $error = $this->upload->display_error();
-            var_dump($error);
+            set_pesan('Terjadi kesalahan saat mengupload data', false);
         }
     }
 }
