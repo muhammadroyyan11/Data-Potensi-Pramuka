@@ -165,7 +165,7 @@
                     </li>
                     <li class=" navigation-header"><span>Rekap Data Potensi</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'anggota/ gudep' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('anggota/gudep') ?>"><i class="feather icon-x-circle"></i><span class="menu-title" data-i18n="Tanggungan">Gudep</span></a>
+                    <li <?= $this->uri->segment(1) == 'gudep' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('gudep') ?>"><i class="feather icon-x-circle"></i><span class="menu-title" data-i18n="Tanggungan">Gudep</span></a>
                     </li>
                     <li <?= $this->uri->segment(1) == 'saka' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('saka') ?>"><i class="feather icon-x-circle"></i><span class="menu-title" data-i18n="Tanggungan">Saka</span></a>
                     </li>
@@ -211,9 +211,9 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <!-- Dashboard Ecommerce Starts -->
+                <!-- Content -->
                 <?php echo $contents ?>
-                <!-- Dashboard Ecommerce ends -->
+                <!-- Content ends -->
 
             </div>
         </div>

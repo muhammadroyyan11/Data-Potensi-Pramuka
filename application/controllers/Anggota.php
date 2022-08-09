@@ -37,11 +37,11 @@ class Anggota extends CI_Controller
             $username = $this->input->post('username', true);
             $email = $this->input->post('email', true);
 
-            $uniq_username = $db['username'] == $username ? '' : '|is_unique[user.username]';
-            $uniq_email = $db['email'] == $email ? '' : '|is_unique[user.email]';
+            // $uniq_username = $db['username'] == $username ? '' : '|is_unique[user.username]';
+            // $uniq_email = $db['email'] == $email ? '' : '|is_unique[user.email]';
 
-            $this->form_validation->set_rules('username', 'Username', 'required|trim|alpha_numeric' . $uniq_username);
-            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $uniq_email);
+            // $this->form_validation->set_rules('username', 'Username', 'required|trim|alpha_numeric' . $uniq_username);
+            // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $uniq_email);
         }
     }
 
@@ -100,15 +100,24 @@ class Anggota extends CI_Controller
         }
     }
 
-    public function edit($getId)
+    public function tes($id)
     {
-        $id = encode_php_tags($getId);
+        // $id = 22;
+        $tes = $this->anggota->getPotensiById($id);
+        var_dump($tes);
+    }
+
+    public function edit($id)
+    {
+        // $id = encode_php_tags($getId);
         $this->_validasi('edit');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit User";
+            $data['row'] = $this->base->getWilayahById(userdata('wilayah'))->row();
+            $data['potensi'] = $this->anggota->getPotensiById($id)->result();
             $data['user'] = $this->base_model->get('user', ['id_user' => $id]);
-            $this->template->load('template', 'user/edit', $data);
+            $this->template->load('template', 'anggota/edit', $data);
         } else {
             $input = $this->input->post(null, true);
             $input_data = [

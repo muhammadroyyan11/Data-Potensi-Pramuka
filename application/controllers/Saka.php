@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gudep extends CI_Controller {
+class Saka extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -30,7 +30,7 @@ class Gudep extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = "Data Anggota Gudep";
-        $data['users'] = $this->base_model->getWhereByPotensi(userdata('wilayah'), 1)->result_array();
+        $data['users'] = $this->base_model->getWhereByPotensi(userdata('wilayah'), 2)->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
         // var_dump(userdata('wilayah'));
         $this->template->load('template', 'perPotensi/data', $data);

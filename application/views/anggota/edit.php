@@ -1,12 +1,12 @@
 <div class="col-md-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Edit Data User</h4>
+            <h4 class="card-title">Tambah Data Anggota Potensi <?= $row->nama_wilayah ?></h4>
         </div>
         <div class="card-content">
             <div class="card-body">
                 <?= $this->session->flashdata('pesan'); ?>
-                <?= form_open('', [], ['id_user' => $user['id_user']]); ?>
+                <?= form_open(); ?>
                 <div class="form-body">
                     <div class="row">
                         <div class="col-12">
@@ -16,10 +16,42 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= set_value('username', $user['username']); ?>">
+                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= set_value('username'); ?>">
                                         <?= form_error('username', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Password</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                        <?= form_error('password', '<span class="text-danger small">', '</span>'); ?>
+                                        <div class="form-control-position">
+                                            <i class="feather icon-hash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Konfirmasi Password</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="password" id="password2" name="password2" class="form-control" placeholder="Konfirmasi Password">
+                                        <?= form_error('password2', '<span class="text-danger small">', '</span>'); ?>
+                                        <div class="form-control-position">
+                                            <i class="feather icon-hash"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +64,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukkan nama" value="<?= set_value('nama', $user['nama']); ?>">
+                                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukkan nama" value="<?= set_value('nama'); ?>">
                                         <?= form_error('nama', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-user"></i>
@@ -48,7 +80,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" value="<?= set_value('email', $user['email']); ?>">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" value="<?= set_value('email'); ?>">
                                         <?= form_error('email', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-mail"></i>
@@ -64,10 +96,10 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="no_telp" id="no_telp" class="form-control" name="no_telp" placeholder="Masukkan No Telp" value="<?= set_value('no_telp', $user['no_telp']); ?>">
+                                        <input type="no_telp" id="no_telp" class="form-control" name="no_telp" placeholder="Masukkan No Telp" value="<?= set_value('no_telp'); ?>">
                                         <?= form_error('no_telp', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
-                                            <i class="feather icon-mail"></i>
+                                            <i class="feather icon-phone"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -76,18 +108,34 @@
                         <div class="col-12">
                             <div class="form-group row">
                                 <div class="col-md-4">
-                                    <span>Role</span>
+                                    <span>Wilayah</span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="custom-control custom-radio">
-                                        <input <?= $user['role'] == 'admin' ? 'checked' : ''; ?> <?= set_radio('role', 'admin'); ?> value="admin" type="radio" id="admin" name="role" class="custom-control-input">
-                                        <label class="custom-control-label" for="admin">Admin</label>
+                                <div class="col-md-8">
+                                    <div class="position-relative has-icon-left">
+                                        <select name="kwarcab" id="" class="form-control">
+                                            <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
+                                        </select>
+                                        <div class="form-control-position">
+                                            <i class="feather icon-map-pin"></i>
+                                        </div>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input <?= $user['role'] == 'gudang' ? 'checked' : ''; ?> <?= set_radio('role', 'gudang'); ?> value="gudang" type="radio" id="gudang" name="role" class="custom-control-input">
-                                        <label class="custom-control-label" for="gudang">Gudang</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Potensi</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="position-relative has-icon-left">
+                                        <select class="select2 form-control" id="example" name="potensi[]" multiple="multiple">
+                                            <?php foreach ($potensi as $key => $data) { ?>
+                                                <!-- <option value="<?= $data->id_potensi?>"><?= $data->nama_potensi ?></option> -->
+                                                <option <?php if($data->id_potensi == $data->id_potensi){ echo 'selected="selected"'; } ?> value="<?php echo $data->id_potensi ?>"><?php echo $data->nama_potensi?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <?= form_error('role', '<span class="text-danger small">', '</span>'); ?>
                                 </div>
                             </div>
                         </div>

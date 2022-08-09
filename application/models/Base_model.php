@@ -26,6 +26,20 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function getWhereByPotensi($where = null, $potensi_id)
+    {
+        $this->db->select('*');
+        $this->db->from('potensi_user');
+        $this->db->join('user', 'user.id_user = potensi_user.user_id');
+        $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
+        $this->db->where('role', 3);
+        if ($where != null) {
+            $this->db->where('wilayah', $where);
+            $this->db->where('potensi_id', $potensi_id);
+        }
+        return $this->db->get();
+    }
+
     public function getUsers($id)
     {
         $this->db->join('wilayah', 'wilayah.id_wilayah = user.wilayah');
