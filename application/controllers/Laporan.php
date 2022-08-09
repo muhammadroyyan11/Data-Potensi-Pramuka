@@ -49,7 +49,7 @@ class Laporan extends CI_Controller
         // var_dump($post);
 
         $config['upload_path']          = './assets/uploads/laporan/';
-        $config['allowed_types']        = '';
+        $config['allowed_types']        = '*';
         $config['max_size']             = 10000;
         $config['max_width']            = 10000;
         $config['max_height']           = 10000;
@@ -57,7 +57,7 @@ class Laporan extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('lampiran')) {
+        if ($this->upload->do_upload('lampiran')) {
             $post['lampiran'] = $this->upload->data('file_name');
             $this->laporan->add($post);
             if ($this->db->affected_rows() > 0) {
@@ -67,7 +67,7 @@ class Laporan extends CI_Controller
             redirect('laporan');
         } else {
             $error = $this->upload->display_error();
-            echo $error;
+            var_dump($error);
         }
     }
 }

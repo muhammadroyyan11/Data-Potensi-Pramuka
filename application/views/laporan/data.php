@@ -34,7 +34,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $data->judul_kegiatan ?></td>
                                             <td><?= $data->deskripsi ?></td>
-                                            <td><?= $data->lampiran ?></td>
+                                            <td><a href="<?= base_url()?>assets/uploads/laporan/<?= $data->lampiran ?>"><?= $data->lampiran ?></a></td>
                                             <td><?= $data->date ?></td>
                                             <td>
 
@@ -63,26 +63,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= site_url('laporan/proses') ?>" method="post">
-                    <div class="modal-body">
-                        <label>Judul Kegiatan: </label>
-                        <div class="form-group">
-                            <input type="text" name="judul_kegiatan" placeholder="Judul Kegiatan" class="form-control">
-                        </div>
-
-                        <label>Uraian Singkat: </label>
-                        <div class="form-group">
-                            <textarea name="deskripsi" id="" class="form-control" cols="10" rows="10"></textarea>
-                        </div>
-
-                        <label>Lampiran: </label>
-                        <div class="form-group">
-                            <input type="file" name="lampiran" placeholder="Lampiran" class="form-control">
-                        </div>
+                <?php echo form_open_multipart('laporan/proses'); ?>
+                <div class="modal-body">
+                    <label>Judul Kegiatan: </label>
+                    <div class="form-group">
+                        <input type="text" name="judul_kegiatan" placeholder="Judul Kegiatan" class="form-control">
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Upload</button>
+
+                    <label>Uraian Singkat: </label>
+                    <div class="form-group">
+                        <textarea name="deskripsi" id="" class="form-control" cols="10" rows="10"></textarea>
                     </div>
+
+                    <label>Lampiran: </label>
+                    <div class="form-group">
+                        <input type="file" name="lampiran" placeholder="Lampiran" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
                 </form>
             </div>
         </div>
