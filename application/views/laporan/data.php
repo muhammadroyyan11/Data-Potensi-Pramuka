@@ -1,0 +1,90 @@
+<!-- Zero configuration table -->
+<section id="basic-datatable">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"><?= $title ?></h4>
+                    <div class="pull-right">
+                        <button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#large">
+                            <i class="fa fa-user-plus"></i> Tambah Laporan
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-body card-dashboard">
+                        <?= $this->session->flashdata('pesan'); ?>
+                        <div class="table-responsive">
+                            <table class="table zero-configuration">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Kegiatan</th>
+                                        <th>Deskripsi</th>
+                                        <th>Lapiran File</th>
+                                        <th>Tanggal</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($laporan as $key => $data) { ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $data->judul_kegiatan ?></td>
+                                            <td><?= $data->deskripsi ?></td>
+                                            <td><?= $data->lampiran ?></td>
+                                            <td><?= $data->date ?></td>
+                                            <td>
+
+                                                <a href="<?= base_url('anggota/edit/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
+                                                <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('anggota/delete/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade text-left" id="large" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel17">Laporan Kegitan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= site_url('laporan/proses') ?>" method="post">
+                    <div class="modal-body">
+                        <label>Judul Kegiatan: </label>
+                        <div class="form-group">
+                            <input type="text" name="judul_kegiatan" placeholder="Judul Kegiatan" class="form-control">
+                        </div>
+
+                        <label>Uraian Singkat: </label>
+                        <div class="form-group">
+                            <textarea name="deskripsi" id="" class="form-control" cols="10" rows="10"></textarea>
+                        </div>
+
+                        <label>Lampiran: </label>
+                        <div class="form-group">
+                            <input type="file" name="lampiran" placeholder="Lampiran" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

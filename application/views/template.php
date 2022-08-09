@@ -281,6 +281,33 @@
     <script src="<?= base_url() ?>assets/app-assets/js/scripts/forms/select/form-select2.js"></script>
     <!-- <script src="<?= base_url() ?>assets/app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
 
+    <!-- CKEDITOR -->
+    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+
+    <script>
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor2')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor3')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
+    </script>
+
     <script>
         var hoursLabel = document.getElementById("hours");
         var minutesLabel = document.getElementById("minutes");
