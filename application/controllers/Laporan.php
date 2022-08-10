@@ -42,6 +42,18 @@ class Laporan extends CI_Controller
         $this->template->load('template', 'laporan/data', $data);
     }
 
+    public function detail($id)
+    {
+        $where = array('id_laporan' => $id);
+        $get = $this->laporan->get($where)->row();
+        $data = array(
+            'title' => 'Detail Lampiran',
+            'row' => $get
+        );
+
+        $this->template->load('template', 'laporan/detail', $data);
+    }
+
     public function proses()
     {
         $post = $this->input->post(null, TRUE);

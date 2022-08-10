@@ -3,11 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Laporan_model extends CI_Model
 {
-    public function get($where)
+    public function get($where = null)
     {
         $this->db->select('*');
         $this->db->from('laporan');
-        $this->db->where($where);
+        if ($where != null) {
+            $this->db->where($where);
+        }
         return $this->db->get();
     }
 

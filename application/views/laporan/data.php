@@ -21,7 +21,7 @@
                                         <th>No</th>
                                         <th>Judul Kegiatan</th>
                                         <th>Deskripsi</th>
-                                        <th>Lapiran File</th>
+                                        <th>Lampiran File</th>
                                         <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -38,9 +38,7 @@
                                                 <td><a href="<?= base_url() ?>assets/uploads/laporan/<?= $data->lampiran ?>"><?= $data->lampiran ?></a></td>
                                                 <td><?= $data->date ?></td>
                                                 <td>
-
-                                                    <a href="<?= base_url('anggota/edit/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
-                                                    <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('anggota/delete/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
+                                                    <a href="<?= base_url('laporan/detail/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-info"></i></a>
                                                 </td>
                                             </tr>
                                     <?php }
