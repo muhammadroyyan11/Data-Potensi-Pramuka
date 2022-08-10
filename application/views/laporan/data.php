@@ -29,20 +29,22 @@
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($laporan as $key => $data) { ?>
-                                        <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $data->judul_kegiatan ?></td>
-                                            <td><?= $data->deskripsi ?></td>
-                                            <td><a href="<?= base_url()?>assets/uploads/laporan/<?= $data->lampiran ?>"><?= $data->lampiran ?></a></td>
-                                            <td><?= $data->date ?></td>
-                                            <td>
+                                    foreach ($laporan as $key => $data) {
+                                        if ($data->user_id == userdata('id_user')) { ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $data->judul_kegiatan ?></td>
+                                                <td><?= $data->deskripsi ?></td>
+                                                <td><a href="<?= base_url() ?>assets/uploads/laporan/<?= $data->lampiran ?>"><?= $data->lampiran ?></a></td>
+                                                <td><?= $data->date ?></td>
+                                                <td>
 
-                                                <a href="<?= base_url('anggota/edit/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
-                                                <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('anggota/delete/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
+                                                    <a href="<?= base_url('anggota/edit/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>
+                                                    <a onclick="return confirm('Yakin ingin menghapus data?')" href="<?= base_url('anggota/delete/') . $data->id_laporan ?>" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                    } ?>
                                 </tbody>
                             </table>
                         </div>
