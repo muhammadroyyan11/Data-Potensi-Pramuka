@@ -30,7 +30,8 @@ class Laporan_model extends CI_Model
             'deskripsi' => $post['deskripsi'],
             'lampiran' => $post['lampiran'],
             'date' => date('Y-m-d'),
-            'user_id' => userdata('id_user')
+            'user_id' => userdata('id_user'),
+            'wilayah_id' => userdata('wilayah')
         ];
         $this->db->insert('laporan', $params);
     }
