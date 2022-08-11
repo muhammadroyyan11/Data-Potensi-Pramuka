@@ -169,18 +169,26 @@
                     </li>
                     <li <?= $this->uri->segment(1) == 'saka' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('saka') ?>"><i class="feather icon-x-circle"></i><span class="menu-title" data-i18n="Tanggungan">Saka</span></a>
                     </li>
+                    <li class=" navigation-header"><span>Member Management</span>
+                    </li>
+                    <li <?= $this->uri->segment(1) == 'anggota' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('anggota') ?>"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Laporan">Data Anggota</span></a>
+                    </li>
+                <?php } ?>
+                <?php if (userdata('role') == 2) { ?>
                     <li class=" navigation-header"><span>Report Management</span>
                     </li>
                     <li <?= $this->uri->segment(1) == 'berita' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('berita') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Data berita</span></a>
                     </li>
                     <li <?= $this->uri->segment(1) == 'laporan' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('laporan') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Laporan Kegiatan</span></a>
                     </li>
-                    <li class=" navigation-header"><span>Member Management</span>
-                    </li>
-                    <li <?= $this->uri->segment(1) == 'anggota' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('anggota') ?>"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Laporan">Data Anggota</span></a>
-                    </li>
                 <?php } ?>
                 <?php if (userdata('role') == 1) { ?>
+                    <li class=" navigation-header"><span>Report Management</span>
+                    </li>
+                    <li <?= $this->uri->segment(1) == 'berita' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('berita') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Data berita</span></a>
+                    </li>
+                    <li <?= $this->uri->segment(1) == 'laporanAdmin' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('laporanAdmin') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="LaporanAdmin">Kegiatan Daerah</span></a>
+                    </li>
                     <li class=" navigation-header"><span>Control</span>
                     </li>
                     <li <?= $this->uri->segment(1) == 'wilayah' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('wilayah') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Wilayah</span></a>
