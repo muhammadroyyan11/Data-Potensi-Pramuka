@@ -26,6 +26,19 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function getExport($where = null)
+    {
+        $this->db->select('*');
+        $this->db->from('anggota');
+        // $this->db->join('user', 'user.id_user = potensi_user.user_id');
+        // $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
+        // $this->db->where('role', 3);
+        // if ($where != null) {
+        //     $this->db->where('wilayah', $where);
+        // }
+        return $this->db->get();
+    }
+
     public function getWhereByPotensi($where = null, $potensi_id)
     {
         $this->db->select('*');

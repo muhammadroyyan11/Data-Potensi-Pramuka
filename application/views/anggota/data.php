@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <h4 class="card-title"><?= $title ?></h4>
                     <div class="pull-right">
-                        <a href="<?= site_url('anggota/add') ?>" class="btn btn-success btn-flat">
+                        <a href="<?= site_url('anggota/export/') ?>" class="btn btn-success btn-flat">
                             <i class="fa fa-file-excel-o"></i> Export Excel
                         </a>
                         <a href="<?= site_url('anggota/add') ?>" class="btn btn-primary btn-flat">
