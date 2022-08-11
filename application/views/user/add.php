@@ -137,7 +137,6 @@
                                             <option value="" readonly>-- Silahkan Pilih --</option>
                                             <option value="1">Super Admin</option>
                                             <option value="2">Admin Wilayah</option>
-                                            <option value="3">Anggota</option>
                                         </select>
                                         <div class="form-control-position">
                                             <i class="feather icon-users"></i>

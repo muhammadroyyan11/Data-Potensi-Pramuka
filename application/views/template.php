@@ -187,7 +187,7 @@
                     </li>
                     <li <?= $this->uri->segment(1) == 'berita' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('berita') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Data berita</span></a>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'laporanAdmin' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('laporanAdmin') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="LaporanAdmin">Kegiatan Daerah</span></a>
+                    <li <?= $this->uri->segment(1) == 'kegiatan' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('kegiatan') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="kegiatan">Rekap Kegiatan</span></a>
                     </li>
                     <li class=" navigation-header"><span>Control</span>
                     </li>
