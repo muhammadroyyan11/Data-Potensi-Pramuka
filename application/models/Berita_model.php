@@ -32,10 +32,15 @@ class Berita_model extends CI_Model
     {
         $params = [
             'judul' => $post['judul'],
-            'editor' => $post['editor'],
             'isi' => $post['isi'],
             'status' => $post['status'],
         ];
+
+        if ($post['editor'] != null) {
+            $params['editor'] = $post['editor'];
+        } else {
+            $params['editor'] = null;
+        }
 
         $this->db->where('id_berita', $post['id_berita']);
         $this->db->update('berita', $params);
