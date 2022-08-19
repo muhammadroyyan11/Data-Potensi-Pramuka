@@ -1,7 +1,7 @@
 <div class="col-md-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Tambah Data Anggota Potensi <?= $row->nama_wilayah ?></h4>
+            <h4 class="card-title">Tambah Data Anggota Potensi</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -131,7 +131,7 @@
                                     <div class="position-relative has-icon-left">
                                         <select class="select2 form-control" name="potensi[]" multiple="multiple">
                                             <?php foreach ($potensi as $key => $data) { ?>
-                                                <option value="<?= $data->id_potensi?>"><?= $data->nama_potensi ?></option>
+                                                <option value="<?= $data->id_potensi ?>"><?= $data->nama_potensi ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
