@@ -58,7 +58,7 @@ class Laporan extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
 
-        var_dump($post);
+        // var_dump($post);
 
         $config['upload_path']          = './assets/uploads/laporan/';
         $config['allowed_types']        = '*';
@@ -69,15 +69,16 @@ class Laporan extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('lampiran')) {
+        if ($this->upload->do_upload('lampiran')) {
             $post['lampiran'] = $this->upload->data('file_name');
             $this->laporan->add($post);
             if ($this->db->affected_rows() > 0) {
                 set_pesan('Data Berhasil Dismpan');
             }
-            var_dump($post);
+            // var_dump($post);
             redirect('laporan');
         } else {
+            var_dump($post);
             set_pesan('Terjadi kesalahan saat mengupload data', false);
         }
     }

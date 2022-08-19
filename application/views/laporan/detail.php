@@ -12,7 +12,7 @@
                                 <i class="fa fa-arrow-left"></i> Kembali
                             </a>
                         </div>
-                    <?php }  elseif (userdata('role') == 1) { ?>
+                    <?php } elseif (userdata('role') == 1) { ?>
                         <div class="pull-right">
                             <a href="<?= site_url('kegiatan') ?>" class="btn btn-secondary btn-flat">
                                 <i class="fa fa-arrow-left"></i> Kembali
@@ -43,7 +43,7 @@
                                 <tr>
                                     <th>Lampiran</th>
                                     <th>:</th>
-                                    <td><a href="<?= base_url() ?>assets/uploads/laporan/<?= $row->lampiran ?>"><?= $row->lampiran ?></a>
+                                    <td><a href="<?= base_url() ?>assets/uploads/laporan/<?= $row->lampiran ?>" target="_blank"><?= $row->lampiran ?></a>
                                         <br><small style="color: #d1112a;">Klik nama file untuk download</small>
                                     </td>
                                 </tr>
