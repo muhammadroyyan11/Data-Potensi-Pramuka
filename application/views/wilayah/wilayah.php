@@ -34,7 +34,7 @@
                                             <td><?= $no ?></td>
                                             <td><?= $data->nama_wilayah ?></td>
                                             <th>
-                                                <a onclick="return confirm('Yakin ingin hapus?')" href="<?= base_url('masuk/delete/') . $data->id_wilayah ?>" class="btn btn-circle btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a onclick="return confirm('Yakin ingin hapus?')" href="<?= base_url('wilayah/del/') . $data->id_wilayah ?>" class="btn btn-circle btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </th>
                                     </tr>
                                 <?php } ?>

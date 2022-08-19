@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Wilayah extends CI_Controller {
+class Wilayah extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,36 +20,46 @@ class Wilayah extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-    public function __construct()
-    {
-        parent::__construct();
-        cek_login();
-        date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Wilayah_model', 'wilayah');
-    }
+	public function __construct()
+	{
+		parent::__construct();
+		cek_login();
+		date_default_timezone_set('Asia/Jakarta');
+		$this->load->model('Wilayah_model', 'wilayah');
+	}
 
 	public function index()
 	{
-        $wilayah = $this->base_model->get('wilayah')->result();
+		$wilayah = $this->base_model->get('wilayah')->result();
 
 		$data = array(
-            'title' => 'Data Wilayah',
-            'wilayah' => $wilayah
-        );
+			'title' => 'Data Wilayah',
+			'wilayah' => $wilayah
+		);
 
-        $this->template->load('template', 'wilayah/wilayah', $data);
+		$this->template->load('template', 'wilayah/wilayah', $data);
 	}
 
 	public function proses()
 	{
 		$post = $this->input->post(null, TRUE);
-		
+
 		$this->wilayah->add($post);
 
 		if ($this->db->affected_rows() > 0) {
 			set_pesan('Data berhasil disimpan');
 		}
 
+		redirect('wilayah');
+	}
+
+	public function del($id)
+	{
+		$where = array('id_wilayah' => $id);
+		$this->base_model->del('wilayah', $where);
+		if ($this->db->affected_rows() > 0) {
+			set_pesan('Data berhasil di hapus.');
+		}
 		redirect('wilayah');
 	}
 }

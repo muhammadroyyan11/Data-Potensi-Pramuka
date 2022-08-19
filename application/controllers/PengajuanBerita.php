@@ -65,4 +65,14 @@ class PengajuanBerita extends CI_Controller
 
         redirect('pengajuanBerita');
     }
+
+    public function del($id)
+    {
+        $where = array('id_berita' => $id);
+        $this->base_model->del('berita', $where);
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil di hapus.');
+        }
+        redirect('pengajuanBerita');
+    }
 }
