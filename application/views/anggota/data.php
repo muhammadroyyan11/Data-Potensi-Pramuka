@@ -1,10 +1,9 @@
-<!-- Zero configuration table -->
 <section id="basic-datatable">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"><?= $title ?></h4>
+                    <h4 class="card-title"><?= $title ?> Keseluruhan</h4>
                     <div class="pull-right">
                         <a href="<?= site_url('anggota/export/') ?>" class="btn btn-success btn-flat">
                             <i class="fa fa-file-excel-o"></i> Export Excel
@@ -16,7 +15,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body card-dashboard">
-                    <?= $this->session->flashdata('pesan'); ?>
+                        <?= $this->session->flashdata('pesan'); ?>
                         <div class="table-responsive">
                             <table class="table zero-configuration">
                                 <thead>
@@ -27,7 +26,6 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>No. telp</th>
-                                        <th>Potensi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -45,7 +43,6 @@
                                             <td><?= $data['username']; ?></td>
                                             <td><?= $data['email']; ?></td>
                                             <td><?= $data['no_telp']; ?></td>
-                                            <td><?= $data['nama_potensi']; ?></td>
                                             <td>
 
                                                 <a href="<?= base_url('anggota/edit/') . $data['id_user'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>

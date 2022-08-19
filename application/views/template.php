@@ -185,7 +185,7 @@
                 <?php if (userdata('role') == 1) { ?>
                     <li class=" navigation-header"><span>Report Management</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'berita' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('berita') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Data berita</span></a>
+                    <li <?= $this->uri->segment(1) == 'pengajuanBerita' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('pengajuanBerita') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Pengajuan berita</span></a>
                     </li>
                     <li <?= $this->uri->segment(1) == 'kegiatan' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('kegiatan') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="kegiatan">Rekap Kegiatan</span></a>
                     </li>

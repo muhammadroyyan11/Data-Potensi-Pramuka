@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Saka extends CI_Controller {
+class Saka extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,27 +20,28 @@ class Saka extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-    public function __construct()
-    {
-        parent::__construct();
-        cek_login();
-        date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Wilayah_model', 'wilayah');
-    }
+	public function __construct()
+	{
+		parent::__construct();
+		cek_login();
+		date_default_timezone_set('Asia/Jakarta');
+		$this->load->model('Wilayah_model', 'wilayah');
+	}
 
 	public function index()
 	{
 		$data['title'] = "Data Anggota Gudep";
-        $data['users'] = $this->base_model->getWhereByPotensi(userdata('wilayah'), 2)->result_array();
-        $data['wilayah'] = $this->base_model->get('wilayah');
-        // var_dump(userdata('wilayah'));
-        $this->template->load('template', 'perPotensi/data', $data);
+		$data['users'] = $this->base_model->getWhereByPotensi(2)->result_array();
+		$data['usersAdmin'] = $this->base_model->getWhereByAdmin(2)->result_array();
+		$data['wilayah'] = $this->base_model->get('wilayah');
+		// var_dump(userdata('wilayah'));
+		$this->template->load('template', 'perPotensi/data', $data);
 	}
 
 	public function proses()
 	{
 		$post = $this->input->post(null, TRUE);
-		
+
 		$this->wilayah->add($post);
 
 		if ($this->db->affected_rows() > 0) {

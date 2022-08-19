@@ -44,6 +44,7 @@ class Auth extends CI_Controller
                         $userdata = [
                             'user'  => $user_db['id_user'],
                             'role'  => $user_db['role'],
+                            'wilayah' => $user_db['wilayah'],
                             'timestamp' => time()
                         ];
                         $this->session->set_userdata('login_session', $userdata);

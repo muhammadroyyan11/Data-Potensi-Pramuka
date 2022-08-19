@@ -58,7 +58,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('wilayah/proses')?>" method="post">
+            <form action="<?= site_url('wilayah/proses') ?>" method="post">
                 <div class="modal-body">
                     <label>Nama Wilayah : </label>
                     <div class="form-group">
