@@ -113,7 +113,13 @@
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
                                         <select name="kwarcab" id="" class="form-control">
-                                            <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
+                                            <?php if ($this->session->userdata('login_session')['role'] == 2) { ?>
+                                                <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
+                                                <?php } elseif ($this->session->userdata('login_session')['role'] == 1) {
+                                                foreach ($wilayah as $key => $data) { ?>
+                                                    <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
+                                            <?php }
+                                            } ?>
                                         </select>
                                         <div class="form-control-position">
                                             <i class="feather icon-map-pin"></i>

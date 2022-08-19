@@ -15,6 +15,7 @@ class Anggota extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Anggota_model', 'anggota');
         $this->load->model('base_model', 'base');
+        $this->load->model('base_model', 'base');
     }
 
     public function index()
@@ -58,6 +59,7 @@ class Anggota extends CI_Controller
             $data['title'] = "Tambah Anggota";
             $data['row'] = $this->base->getWilayahById(userdata('wilayah'))->row();
             $data['potensi'] = $this->base->get('potensi')->result();
+            $data['wilayah'] = $this->base_model->get('wilayah')->result();
             $this->template->load('template', 'anggota/add', $data);
         } else {
             $input = $this->input->post(null, true);
@@ -246,7 +248,7 @@ class Anggota extends CI_Controller
         $sheet->setTitle("Laporan Data Siswa");
         // Proses file excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="Data Anggota export '. date('Y-m-d').'.xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="Data Anggota export ' . date('Y-m-d') . '.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
