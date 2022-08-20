@@ -18,12 +18,7 @@ class Auth_model extends CI_Model
 
     public function userdata($username)
     {
-        
+
         return $this->db->get_where('user', ['username' => $username])->row_array();
-        // $this->db->select('*');
-        // $this->db->from('potensi_user');
-        // $this->db->join('user','user.id_user = potensi_user.user_id');
-        // $this->db->join('potensi','potensi.id_potensi = potensi_user.potensi_id');
-        // $this->db->where('');
     }
 }

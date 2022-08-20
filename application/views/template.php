@@ -161,9 +161,11 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <?php if (userdata('role') == 1 || userdata('role') == 2) { ?>
+                <?php if (userdata('role') == 1 || userdata('role') == 2 || userdata('role') == 3) { ?>
                     <li <?= $this->uri->segment(1) == 'dashboard' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('dashboard') ?>"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
                     </li>
+                <?php }
+                if (userdata('role') == 1 || userdata('role') == 2) { ?>
                     <li class=" navigation-header"><span>Rekap Data Potensi</span>
                     </li>
                     <li <?= $this->uri->segment(1) == 'gudep' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('gudep') ?>"><i class="feather icon-x-circle"></i><span class="menu-title" data-i18n="Tanggungan">Gudep</span></a>
@@ -198,11 +200,15 @@
                     </li>
                     <li <?= $this->uri->segment(1) == 'user' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('user') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">User Management</span></a>
                     </li>
-                <?php } ?>
-                <?php if (userdata('role') == 3) { ?>
-                    <li class=" navigation-header"><span>HEEEEH</span>
+                <?php }
+                if (userdata('role') == 3) { ?>
+                    <li class=" navigation-header"><span>Management</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'wilayah' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('wilayah') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">HEEEH</span></a>
+                    <li <?= $this->uri->segment(1) == 'biodata' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('biodata') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Biodata Anggota</span></a>
+                    </li>
+                    <li class=" navigation-header"><span>Data jenis</span>
+                    </li>
+                    <li <?= $this->uri->segment(1) == 'dataGudep' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('dataGudep') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Gudep</span></a>
                     </li>
                 <?php } ?>
 

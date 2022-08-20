@@ -109,26 +109,43 @@ class Anggota extends CI_Controller
 
     public function edit($id)
     {
-        // $id = encode_php_tags($getId);
         $this->_validasi('edit');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit User";
             $data['row'] = $this->base->getWilayahById(userdata('wilayah'))->row();
-            $data['potensi'] = $this->anggota->getPotensiById($id)->result();
-            $data['user'] = $this->base_model->get('user', ['id_user' => $id]);
+            $potensi = $this->anggota->getPotensiAnggota($id)->result_array();
+            $data['user'] = $this->anggota->get($id);
+
+            $arr = array();
+            foreach ($potensi as $datas) {
+                array_push($arr, $datas['potensi_id']);
+            }
+
+            $data['potensi'] = $arr;
+
             $this->template->load('template', 'anggota/edit', $data);
         } else {
             $input = $this->input->post(null, true);
+            $this->anggota->deleteAll($id);
             $input_data = [
                 'nama'          => $input['nama'],
-                'username'      => $input['username'],
-                'email'         => $input['email'],
                 'no_telp'       => $input['no_telp'],
-                'role'          => $input['role']
             ];
 
-            if ($this->base_model->update('user', 'id_user', $id, $input_data)) {
+            $this->base_model->update('user', 'id_user', $id, $input_data);
+
+            $itung = count($input['potensi']);
+
+            for ($i = 0; $i < $itung; $i++) {
+                $potensi[$i] = array(
+                    'user_id' => $input['id_user'],
+                    'potensi_id' => $this->input->post('potensi[' . $i . ']'),
+                );
+                $this->anggota->insert($potensi[$i], 'potensi_user');
+            }
+
+            if ($this->db->affected_rows() > 0) {
                 set_pesan('data berhasil diubah.');
                 redirect('anggota');
             } else {

@@ -26,6 +26,8 @@ class Dashboard extends CI_Controller
         // $data['title'] = "Dashboard";
         $get = $this->berita->get()->result();
         $getLaporan = $this->laporan->get()->result();
+        // $getLogin = $this->anggota->getPotensiAnggota(userdata('id_user'))->result();
+
         $data = array(
             'title' => 'Dashboard',
             'berita' => $get,

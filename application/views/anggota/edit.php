@@ -16,7 +16,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= set_value('username'); ?>">
+                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= (set_value('username')) ? set_value('username') : $user->username ?>">
+                                        <input type="hidden" id="username" class="form-control" name="id_user" placeholder="Masukkan username" value="<?= $user->id_user ?>">
                                         <?= form_error('username', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-user"></i>
@@ -64,7 +65,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukkan nama" value="<?= set_value('nama'); ?>">
+                                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Masukkan nama" value="<?= (set_value('nama')) ? set_value('nama') : $user->nama ?>">
                                         <?= form_error('nama', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-user"></i>
@@ -80,7 +81,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" value="<?= set_value('email'); ?>">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" value="<?= (set_value('email')) ? set_value('email') : $user->email ?>">
                                         <?= form_error('email', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-mail"></i>
@@ -96,7 +97,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
-                                        <input type="no_telp" id="no_telp" class="form-control" name="no_telp" placeholder="Masukkan No Telp" value="<?= set_value('no_telp'); ?>">
+                                        <input type="no_telp" id="no_telp" class="form-control" name="no_telp" placeholder="Masukkan No Telp" value="<?= (set_value('no_telp')) ? set_value('no_telp') : $user->no_telp ?>">
                                         <?= form_error('no_telp', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-phone"></i>
@@ -130,10 +131,10 @@
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
                                         <select class="select2 form-control" id="example" name="potensi[]" multiple="multiple">
-                                            <?php foreach ($potensi as $key => $data) { ?>
-                                                <!-- <option value="<?= $data->id_potensi?>"><?= $data->nama_potensi ?></option> -->
-                                                <option <?php if($data->id_potensi == $data->id_potensi){ echo 'selected="selected"'; } ?> value="<?php echo $data->id_potensi ?>"><?php echo $data->nama_potensi?> </option>
-                                            <?php } ?>
+                                            <?php foreach ($this->db->get('potensi')->result() as $data) { ?>
+                                                <option value="<?php echo $data->id_potensi ?>" <?php if (in_array($data->id_potensi, $potensi)) echo 'selected' ?>><?php echo $data->nama_potensi ?></option>
+                                            <?php
+                                            } ?>
                                         </select>
                                     </div>
                                 </div>
