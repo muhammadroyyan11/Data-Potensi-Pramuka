@@ -204,7 +204,7 @@
                 if (userdata('role') == 3) { ?>
                     <li class=" navigation-header"><span>Management</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'biodata' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('biodata') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Biodata Anggota</span></a>
+                    <li <?= $this->uri->segment(1) == 'biodata' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('biodata')  ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Biodata Anggota</span></a>
                     </li>
                     <li class=" navigation-header"><span>Data jenis</span>
                     </li>

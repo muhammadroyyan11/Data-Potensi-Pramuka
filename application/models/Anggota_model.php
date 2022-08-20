@@ -60,4 +60,42 @@ class Anggota_model extends CI_Model
 
         return $this->db->get('user')->row();
     }
+
+    public function getById($id)
+    {
+        $this->db->select('*');
+
+        $this->db->from('user');
+
+        $this->db->where('anggota_id', $id);
+
+        $this->db->join('anggota', 'anggota.id_anggota = user.anggota_id');
+
+        $this->db->join('wilayah', 'wilayah.id_wilayah = user.wilayah');
+
+        return $this->db->get();
+    }
+
+    public function update($post)
+    {
+        $params = [
+            'nama' => $post['nama_anggota'],
+            'email' => $post['email'],
+            'no_telp' => $post['no_hp'],
+        ];
+
+        $this->db->where('id_user', $post['id_user']);
+        $this->db->update('user', $params);
+
+        $paramsDua = [
+            'nama_anggota' => $post['nama_anggota'],
+        ];
+
+        $this->db->where('id_anggota', $post['id_anggota']);
+        $this->db->update('anggota', $paramsDua);
+    }
+
+    public function updateGudep($post)
+    {
+    }
 }

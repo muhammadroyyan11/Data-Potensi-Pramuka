@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Biodata extends CI_Controller
+class DataGudep extends CI_Controller
 {
 
     public function __construct()
@@ -32,8 +32,7 @@ class Biodata extends CI_Controller
             'potensi' => $arr,
             'row' => $user
         );
-
-        $this->template->load('template', 'biodata/biodata', $data);
+        $this->template->load('template', 'biodata/gudep', $data);
     }
 
     public function proses()
@@ -42,12 +41,12 @@ class Biodata extends CI_Controller
 
         var_dump($post);
 
-        $this->anggota->update($post);
+        // $this->anggota->update($post);
 
-        if ($this->db->affected_rows() > 0) {
-            set_pesan('Data berhasil diubah.');
-        }
+        // if ($this->db->affected_rows() > 0) {
+        //     set_pesan('Data berhasil diubah.');
+        // }
 
-        redirect('biodata');
+        // redirect('biodata');
     }
 }
