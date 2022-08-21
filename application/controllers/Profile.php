@@ -57,6 +57,26 @@ class Profile extends CI_Controller
         redirect('profile');
     }
 
+    private function _validasi()
+    {
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
+        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
+    }
+
+    public function changePassword()
+    {
+        $this->_validasi;
+
+        if ($this->form_validation->run() == false) {
+            set_pesan('Password tidak sama', false);
+            redirect('profile');
+        } else {
+            $post = $this->input->post(null, TRUE);
+
+            var_dump($post);
+        }
+    }
+
     public function prosesFoto()
     {
         $post = $this->input->post(null, TRUE);

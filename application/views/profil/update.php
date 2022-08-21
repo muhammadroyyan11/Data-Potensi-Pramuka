@@ -22,7 +22,7 @@
         <div class="col-md-9 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Biodata</h4>
+                    <h4 class="card-title">Informasi Login</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -71,19 +71,21 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" action="<?= site_url('Biodata/proses') ?>" method="POST">
+                        <form class="form form-vertical" action="<?= site_url('profile/changePassword') ?>" method="POST">
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="first-name-icon">Nama</label>
                                             <div class="position-relative has-icon-left">
-                                                <input type="text" id="first-name-icon" class="form-control" name="nama_anggota" value="<?= $row->nama_anggota ?>" placeholder="First Name">
+                                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                                <?= form_error('password', '<span class="text-danger small">', '</span>'); ?>
+                                                <div class="form-control-position">
+                                                    <i class="feather icon-hash"></i>
+                                                </div>
                                                 <input type="hidden" id="first-name-icon" class="form-control" name="id_user" value="<?= $row->id_user ?>" placeholder="First Name">
                                                 <input type="hidden" id="first-name-icon" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" placeholder="First Name">
-                                                <div class="form-control-position">
-                                                    <i class="feather icon-user"></i>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -91,9 +93,10 @@
                                         <div class="form-group">
                                             <label for="password-icon">Tempat Lahir (Kota)</label>
                                             <div class="position-relative has-icon-left">
-                                                <input type="text" id="password-icon" class="form-control" name="tempat_lahir" value="<?= (set_value('tempat_lahir')) ? set_value('tempat_lahir') : $row->tempat_lahir ?>" placeholder="Tempat Lahir">
+                                                <input type="password" id="password2" name="password2" class="form-control" placeholder="Konfirmasi Password">
+                                                <?= form_error('password2', '<span class="text-danger small">', '</span>'); ?>
                                                 <div class="form-control-position">
-                                                    <i class="feather icon-calendar"></i>
+                                                    <i class="feather icon-hash"></i>
                                                 </div>
                                             </div>
                                         </div>
