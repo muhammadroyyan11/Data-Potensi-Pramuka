@@ -208,7 +208,7 @@
                     </li>
                     <li class=" navigation-header"><span>Data jenis</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Gudep</span></a>
+                    <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Potensi</span></a>
                     </li>
                 <?php } ?>
 
