@@ -132,7 +132,7 @@
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?= userdata('nama'); ?></span><span class="user-status">Online</span></div><span><img class="round" src="<?= base_url() ?>assets/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?= userdata('nama'); ?></span><span class="user-status">Online</span></div><span><img class="round" src="<?= base_url() ?>assets/uploads/profil/<?= userdata('foto') ?>" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="<?= site_url('auth/logout/'); ?>"><i class="feather icon-power"></i> Logout</a>
@@ -208,7 +208,7 @@
                     </li>
                     <li class=" navigation-header"><span>Data jenis</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'dataGudep' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('dataGudep') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Gudep</span></a>
+                    <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Gudep</span></a>
                     </li>
                 <?php } ?>
 

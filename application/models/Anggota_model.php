@@ -89,6 +89,9 @@ class Anggota_model extends CI_Model
 
         $paramsDua = [
             'nama_anggota' => $post['nama_anggota'],
+            'tempat_lahir' => $post['tempat_lahir'],
+            'tanggal_lahir' => $post['tanggal_lahir'],
+            'jenis_kelamin' => $post['jenis_kelamin']
         ];
 
         $this->db->where('id_anggota', $post['id_anggota']);
@@ -97,5 +100,29 @@ class Anggota_model extends CI_Model
 
     public function updateGudep($post)
     {
+        $params = [
+            'no_sk' => $post['no_sk'],
+            'no_gudep' => $post['no_gudep'],
+            'pangkalan' => $post['pangkalan'],
+            'golongan' => $post['golongan'],
+            'tingkatan_gudep' => $post['tingkatan_gudep'],
+            'tingkatan_saka' => $post['tingkatan_saka'],
+            'penghargaan' => $post['penghargaan'],
+            'kursus_pembina' => $post['kursus'],
+            'jabatan' => $post['jabatan'],
+        ];
+
+        $this->db->where('id_anggota', $post['id_anggota']);
+        $this->db->update('anggota', $params);
+    }
+
+    public function foto($post)
+    {
+        $params = [
+            'foto' => $post['foto']
+        ];
+
+        $this->db->where('id_user', $post['id_user']);
+        $this->db->update('user', $params);
     }
 }

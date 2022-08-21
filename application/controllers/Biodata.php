@@ -40,7 +40,7 @@ class Biodata extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
 
-        var_dump($post);
+        // var_dump($post);
 
         $this->anggota->update($post);
 
@@ -49,5 +49,32 @@ class Biodata extends CI_Controller
         }
 
         redirect('biodata');
+    }
+
+    public function prosesFoto()
+    {
+        $post = $this->input->post(null, TRUE);
+
+        $config['upload_path']          = './assets/uploads/profil/';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = userdata('nama') . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto')) {
+            $post['foto'] = $this->upload->data('file_name');
+            $this->anggota->foto($post);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Data Berhasil Dismpan');
+            }
+            // var_dump($post);
+            redirect('biodata');
+        } else {
+            // var_dump($post);
+            set_pesan('Terjadi kesalahan saat mengupload data', false);
+        }
     }
 }

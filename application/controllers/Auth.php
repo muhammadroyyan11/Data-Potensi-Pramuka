@@ -45,6 +45,7 @@ class Auth extends CI_Controller
                             'user'  => $user_db['id_user'],
                             'role'  => $user_db['role'],
                             'wilayah' => $user_db['wilayah'],
+                            'foto' => $user_db['foto'],
                             'anggota_id' => $user_db['anggota_id'],
                             'timestamp' => time()
                         ];

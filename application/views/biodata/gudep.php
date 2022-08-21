@@ -1,23 +1,7 @@
 <!-- Basic Vertical form layout section start -->
 <section id="basic-vertical-layouts">
     <div class="row match-height">
-        <div class="col-md-3 col-12 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <center>
-                        <h4>Photo Profile</h4>
-                        <hr>
-                        <div class="col-md-42">
-                            <img src="<?= base_url() ?>assets/app-assets/images/portrait/small/avatar-s-11.jpg" alt="" class="mb-2 rounded">
-                        </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-primary">Edit Photo</button>
-                        </div>
-                    </center>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9 col-12">
+        <div class="col-md-12 col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Data Potensi Kwaran</h4>
@@ -25,7 +9,7 @@
                 <div class="card-content">
                     <div class="card-body">
                         <?= $this->session->flashdata('pesan'); ?>
-                        <form class="form form-vertical" action="<?= site_url('biodata/proses') ?>" method="POST">
+                        <form class="form form-vertical" action="<?= site_url('potensi/savePotensi') ?>" method="POST">
                             <div class="form-body">
                                 <div class="row">
 
@@ -35,6 +19,7 @@
                                         <div class="form-group">
                                             <label for="first-name-vertical">Nama Lengkap</label>
                                             <input type="text" id="first-name-vertical" class="form-control" name="nama_anggota" value="<?= (set_value('nama_anggota')) ? set_value('nama_anggota') : $row->nama_anggota ?>" readonly>
+                                            <input type="hidden" id="first-name-vertical" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" readonly>
                                         </div>
                                     </div>
                                     <?php
@@ -42,11 +27,30 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="email-id-icon">Nomor SK</label>
-                                                <input type="text" id="email-id-icon" class="form-control" name="no_sk" value="<?= (set_value('no_sk')) ? set_value('no_sk') : $row->no_sk ?>" placeholder="Nomor Gudep">
+                                                <input type="text" id="email-id-icon" class="form-control" name="no_sk" value="<?= (set_value('no_sk')) ? set_value('no_sk') : $row->no_sk ?>" placeholder="Nomor SK">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-icon">Nomor Gudep</label>
+                                                <input type="text" id="email-id-icon" class="form-control" name="no_gudep" value="<?= (set_value('no_gudep')) ? set_value('no_gudep') : $row->no_gudep ?>" placeholder="Nomor Gudep">
                                             </div>
                                         </div>
                                     <?php }
-                                    ?>
+                                    if (in_array("saka", $potensi)) { ?>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="password-icon">Jabatan</label>
+                                                <select name="jabatan" id="" class="form-control">
+                                                    <option value="">-- Pilih Jabatan --</option>
+                                                    <option value="Dewan Saka" <?= $row->jabatan == 'Dewan Saka' ? 'selected' : '' ?>>Dewan Saka</option>
+                                                    <option value="Pimpinan SAKA" <?= $row->jabatan == 'Pimpinan SAKA' ? 'selected' : '' ?>>Pimpinan SAKA</option>
+                                                    <option value="Pamong SAKA" <?= $row->jabatan == 'Pamong SAKA' ? 'selected' : '' ?>>Pamong SAKA</option>
+                                                    <option value="Instruktur SAKA" <?= $row->jabatan == 'Instruktur SAKA' ? 'selected' : '' ?>>Instruktur SAKA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-icon">Pangkalan</label>
@@ -61,42 +65,14 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="password-icon">Wilayah</label>
-                                            <input type="text" id="password-icon" class="form-control" name="wilayah" placeholder="<?= (set_value('wilayah')) ? set_value('wilayah') : $row->nama_wilayah ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Tempat Lahir (Kota)</label>
-                                            <input type="text" id="password-icon" class="form-control" name="tempat_lahir" value="<?= (set_value('tempat_lahir')) ? set_value('tempat_lahir') : $row->tempat_lahir ?>" placeholder="Tempat Lahir">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Tanggal Lahir</label>
-                                            <input type="date" id="password-icon" class="form-control" name="tanggal_lahir" value="<?= (set_value('tanggal_lahir')) ? set_value('tanggal_lahir') : $row->tanggal_lahir ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Jenis Kelamin</label>
-                                            <select name="jenis_kelamin" id="" class="form-control">
-                                                <option value="">-- Pilih Jenis Kelamin --</option>
-                                                <option value="putra">Putra</option>
-                                                <option value="putri">Putri</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
                                             <label for="password-icon">Golongan</label>
                                             <select name="golongan" id="" class="form-control">
                                                 <option value="">-- Pilih Golongan --</option>
-                                                <option value="Siaga">S (Siaga)</option>
-                                                <option value="Penggalang">G (Penggalang)</option>
-                                                <option value="Penegak">T (Penegak)</option>
-                                                <option value="d">T (Penegak)</option>
-                                                <option value="b">B (Pembina)</option>
+                                                <option value="Siaga" <?= $row->golongan == 'Siaga' ? 'selected' : '' ?>>S (Siaga)</option>
+                                                <option value="Penggalang" <?= $row->golongan == 'Penggalang' ? 'selected' : '' ?>>G (Penggalang)</option>
+                                                <option value="Penegak" <?= $row->golongan == 'Penegak' ? 'selected' : '' ?>>T (Penegak)</option>
+                                                <option value="Pandega" <?= $row->golongan == 'Pandega' ? 'selected' : '' ?>>D (Pandega)</option>
+                                                <option value="Pembina" <?= $row->golongan == 'Pembina' ? 'selected' : '' ?>>B (Pembina)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -107,27 +83,27 @@
                                                 <select name="tingkatan_gudep" id="" class="form-control">
                                                     <option value="">-- Pilih Tingkatan --</option>
                                                     <optgroup label="Siaga">
-                                                        <option value="Siaga Mula">Siaga Mula</option>
-                                                        <option value="Siaga Bantu">Siaga Bantu</option>
-                                                        <option value="Siaga Tata">Siaga Tata</option>
+                                                        <option value="Siaga Mula" <?= $row->tingkatan_gudep == 'Siaga Mula' ? 'selected' : '' ?>>Siaga Mula</option>
+                                                        <option value="Siaga Bantu" <?= $row->tingkatan_gudep == 'Siaga Bantu' ? 'selected' : '' ?>>Siaga Bantu</option>
+                                                        <option value="Siaga Tata" <?= $row->tingkatan_gudep == 'Siaga Tata' ? 'selected' : '' ?>>Siaga Tata</option>
                                                     </optgroup>
                                                     <optgroup label="Penggalang">
-                                                        <option value="Penggalang Ramu">Penggalang Ramu</option>
-                                                        <option value="Penggalang Rakit">Penggalang Rakit</option>
-                                                        <option value="Penggalang Terap">Penggalang Terap</option>
+                                                        <option value="Penggalang Ramu" <?= $row->tingkatan_gudep == 'Penggalang Ramu' ? 'selected' : '' ?>>Penggalang Ramu</option>
+                                                        <option value="Penggalang Rakit" <?= $row->tingkatan_gudep == 'Penggalang Rakit' ? 'selected' : '' ?>>Penggalang Rakit</option>
+                                                        <option value="Penggalang Terap" <?= $row->tingkatan_gudep == 'Penggalang Terap' ? 'selected' : '' ?>>Penggalang Terap</option>
                                                     </optgroup>
                                                     <optgroup label="Penegak">
-                                                        <option value="Penegak Bantara">Penegak Bantara</option>
-                                                        <option value="Penegak Laksana">Penegak Laksana</option>
+                                                        <option value="Penegak Bantara" <?= $row->tingkatan_gudep == 'Penegak Bantara' ? 'selected' : '' ?>>Penegak Bantara</option>
+                                                        <option value="Penegak Laksana" <?= $row->tingkatan_gudep == 'Penegak Laksana' ? 'selected' : '' ?>>Penegak Laksana</option>
                                                     </optgroup>
                                                     <optgroup Label="Pandega">
-                                                        <option value="Penegak Pandega">Penegak Pandega</option>
+                                                        <option value="Pandega" <?= $row->tingkatan_gudep == 'Pandega' ? 'selected' : '' ?>>Pandega</option>
                                                     </optgroup>
                                                     <optgroup label="Pembina">
-                                                        <option value="Pembina KMD">Pembina KMD</option>
-                                                        <option value="Pembina KML">Pembina KML</option>
-                                                        <option value="Pembina KPD">Pembina KPD</option>
-                                                        <option value="Pembina KPL">Pembina KPL</option>
+                                                        <option value="Pembina KMD" <?= $row->tingkatan_gudep == 'Pembina KMD' ? 'selected' : '' ?>>Pembina KMD</option>
+                                                        <option value="Pembina KML" <?= $row->tingkatan_gudep == 'Pembina KML' ? 'selected' : '' ?>>Pembina KML</option>
+                                                        <option value="Pembina KPD" <?= $row->tingkatan_gudep == 'Pembina KPD' ? 'selected' : '' ?>>Pembina KPD</option>
+                                                        <option value="Pembina KPL" <?= $row->tingkatan_gudep == 'Pembina KPL' ? 'selected' : '' ?>>Pembina KPL</option>
                                                     </optgroup>
                                                 </select>
                                             </div>
@@ -140,31 +116,14 @@
                                                 <select name="tingkatan_saka" id="" class="form-control">
                                                     <option value="">-- Pilih Tingkatan --</option>
                                                     <optgroup label="Penggalang">
-                                                        <option value="Terap">Terap</option>
-                                                    </optgroup>
-                                                    <optgroup label="Penggalang">
-                                                        <option value="Penggalang Ramu">Penggalang Ramu</option>
-                                                        <option value="Penggalang Rakit">Penggalang Rakit</option>
-                                                        <option value="Penggalang Terap">Penggalang Terap</option>
+                                                        <option value="Terap" <?= $row->tingkatan_saka == 'Terap' ? 'selected' : '' ?>>Terap</option>
                                                     </optgroup>
                                                     <optgroup label="Penegak">
-                                                        <option value="Penegak Bantara">Penegak Bantara</option>
-                                                        <option value="Penegak Laksana">Penegak Laksana</option>
+                                                        <option value="Penegak Bantara" <?= $row->tingkatan_saka == 'Penegak Bantara' ? 'selected' : '' ?>>Penegak Bantara</option>
+                                                        <option value="Penegak Laksana" <?= $row->tingkatan_saka == 'Penegak Laksana' ? 'selected' : '' ?>>Penegak Laksana</option>
                                                     </optgroup>
                                                     <optgroup Label="Pandega">
-                                                        <option value="Penegak Pandega">Penegak Pandega</option>
-                                                    </optgroup>
-                                                    <optgroup label="Pembina">
-                                                        <option value="Pembina KMD">Pembina KMD</option>
-                                                        <option value="Pembina KML">Pembina KML</option>
-                                                        <option value="Pembina KPD">Pembina KPD</option>
-                                                        <option value="Pembina KPL">Pembina KPL</option>
-                                                    </optgroup>
-                                                    <optgroup Label="Jabatan">
-                                                        <option value="Dewan Saka">Dewan Saka</option>
-                                                        <option value="Pimpinan SAKA">Pimpinan SAKA</option>
-                                                        <option value="Pamong SAKA">Pamong SAKA</option>
-                                                        <option value="Instruktur SAKA">Instruktur SAKA</option>
+                                                        <option value="Pandega" <?= $row->tingkatan_saka == 'Pandega' ? 'selected' : '' ?>>Pandega</option>
                                                     </optgroup>
                                                 </select>
                                             </div>
@@ -175,24 +134,26 @@
                                             <label for="password-icon">Penghargaan</label>
                                             <select name="penghargaan" id="" class="form-control">
                                                 <option value="">-- Pilih Penghargaan --</option>
-                                                <option value="garuda">Garuda</option>
-                                                <option value="teladan">Teladan</option>
+                                                <option value="Garuda" <?= $row->penghargaan == 'Garuda' ? 'selected' : '' ?>>Garuda</option>
+                                                <option value="Teladan" <?= $row->penghargaan == 'Teladan' ? 'selected' : '' ?>>Teladan</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Kursus pembina</label>
-                                            <select name="kursus" id="" class="form-control">
-                                                <option value="">-- Pilih Penghargaan --</option>
-                                                <option value="Belum Kursus">Belum Kursus</option>
-                                                <option value="Kursus Mahir Dasar">Kursus Mahir Dasar</option>
-                                                <option value="Kursus Mahir Lanjutan">Kursus Mahir Lanjutan</option>
-                                                <option value="Kursus Pelatih Dasar">Kursus Pelatih Dasar</option>
-                                                <option value="Kursus Pelatih Lanjutan">Kursus Pelatih Lanjutan</option>
-                                            </select>
+                                    <?php if (in_array("gudep", $potensi)) { ?>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="password-icon">Kursus pembina</label>
+                                                <select name="kursus" id="" class="form-control">
+                                                    <option value="">-- Pilih Kursus --</option>
+                                                    <option value="Belum Kursus" <?= $row->kursus_pembina == 'Belum Kursus' ? 'selected' : '' ?>>Belum Kursus</option>
+                                                    <option value="Kursus Mahir Dasar" <?= $row->kursus_pembina == 'Kursus Mahir Dasar' ? 'selected' : '' ?>>Kursus Mahir Dasar</option>
+                                                    <option value="Kursus Mahir Lanjutan" <?= $row->kursus_pembina == 'Kursus Mahir Lanjutan' ? 'selected' : '' ?>>Kursus Mahir Lanjutan</option>
+                                                    <option value="Kursus Pelatih Dasar" <?= $row->kursus_pembina == 'Kursus Pelatih Dasar' ? 'selected' : '' ?>>Kursus Pelatih Dasar</option>
+                                                    <option value="Kursus Pelatih Lanjutan" <?= $row->kursus_pembina == 'Kursus Pelatih Lanjutan' ? 'selected' : '' ?>>Kursus Pelatih Lanjutan</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Perbarui</button>

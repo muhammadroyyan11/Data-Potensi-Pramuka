@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DataGudep extends CI_Controller
+class Potensi extends CI_Controller
 {
 
     public function __construct()
@@ -35,18 +35,16 @@ class DataGudep extends CI_Controller
         $this->template->load('template', 'biodata/gudep', $data);
     }
 
-    public function proses()
+    public function savePotensi()
     {
         $post = $this->input->post(null, TRUE);
 
-        var_dump($post);
+        $this->anggota->updateGudep($post);
 
-        // $this->anggota->update($post);
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil diubah.');
+        }
 
-        // if ($this->db->affected_rows() > 0) {
-        //     set_pesan('Data berhasil diubah.');
-        // }
-
-        // redirect('biodata');
+        redirect('potensi');
     }
 }
