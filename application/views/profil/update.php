@@ -1,4 +1,5 @@
 <!-- Basic Vertical form layout section start -->
+<?= $this->session->flashdata('pesan'); ?>
 <section id="basic-vertical-layouts">
     <div class="row match-height">
         <div class="col-md-3 col-12 mb-3">
@@ -26,7 +27,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <?= $this->session->flashdata('pesan'); ?>
+
                         <form class="form form-vertical" action="<?= site_url('profile/proses') ?>" method="POST">
                             <div class="form-body">
                                 <div class="row">
@@ -34,9 +35,11 @@
                                         <div class="form-group">
                                             <label for="first-name-icon">Nama</label>
                                             <div class="position-relative has-icon-left">
-                                                <input type="text" id="first-name-icon" class="form-control" name="nama_anggota" value="<?= $row->nama_anggota ?>" placeholder="First Name">
+                                                <input type="text" id="first-name-icon" class="form-control" name="nama_anggota" value="<?= $row->nama ?>" placeholder="First Name">
                                                 <input type="hidden" id="first-name-icon" class="form-control" name="id_user" value="<?= $row->id_user ?>" placeholder="First Name">
-                                                <input type="hidden" id="first-name-icon" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" placeholder="First Name">
+                                                <?php if (userdata('role') == 2 || userdata('role') == 3) { ?>
+                                                    <input type="hidden" id="first-name-icon" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" placeholder="First Name">
+                                                <?php } ?>
                                                 <div class="form-control-position">
                                                     <i class="feather icon-user"></i>
                                                 </div>
@@ -71,44 +74,46 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" action="<?= site_url('profile/changePassword') ?>" method="POST">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="first-name-icon">Nama</label>
-                                            <div class="position-relative has-icon-left">
-                                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                                                <?= form_error('password', '<span class="text-danger small">', '</span>'); ?>
-                                                <div class="form-control-position">
-                                                    <i class="feather icon-hash"></i>
-                                                </div>
-                                                <input type="hidden" id="first-name-icon" class="form-control" name="id_user" value="<?= $row->id_user ?>" placeholder="First Name">
+                        <?= form_open(); ?>
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-icon">Password</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                            <?= form_error('password', '<span class="text-danger small">', '</span>'); ?>
+                                            <div class="form-control-position">
+                                                <i class="feather icon-hash"></i>
+                                            </div>
+                                            <input type="hidden" id="first-name-icon" class="form-control" name="id_user" value="<?= $row->id_user ?>" placeholder="First Name">
+                                            <?php if (userdata('role') == 2 || userdata('role') == 3) { ?>
                                                 <input type="hidden" id="first-name-icon" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" placeholder="First Name">
+                                            <?php } ?>
 
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Tempat Lahir (Kota)</label>
-                                            <div class="position-relative has-icon-left">
-                                                <input type="password" id="password2" name="password2" class="form-control" placeholder="Konfirmasi Password">
-                                                <?= form_error('password2', '<span class="text-danger small">', '</span>'); ?>
-                                                <div class="form-control-position">
-                                                    <i class="feather icon-hash"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1">Perbarui</button>
-                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="password-icon">Konfirmasi Password</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="Konfirmasi Password">
+                                            <?= form_error('password2', '<span class="text-danger small">', '</span>'); ?>
+                                            <div class="form-control-position">
+                                                <i class="feather icon-hash"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Perbarui</button>
+                                    <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <?= form_close(); ?>
                     </div>
                 </div>
             </div>

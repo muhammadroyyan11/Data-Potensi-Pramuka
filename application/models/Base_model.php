@@ -13,6 +13,25 @@ class Base_model extends CI_Model
         }
     }
 
+    public function getUserAdmin($table, $data = null, $where = null)
+    {
+        if ($data != null) {
+            return $this->db->get_where($table, $data);
+        } else {
+            return $this->db->get_where($table, $where);
+        }
+    }
+
+    public function changePassword($post)
+    {
+        $params = [
+            'password' => password_hash($post['password'], PASSWORD_DEFAULT),
+        ];
+
+        $this->db->where('id_user', $post['id_user']);
+        $this->db->update('user', $params);
+    }
+
     public function getWhere($where = null)
     {
         // $this->db->select('*');

@@ -34,14 +34,33 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        $user = $this->anggota->getById(userdata('anggota_id'))->row();
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
+        $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
 
-        $data = array(
-            'title' => 'Profile',
-            'row' => $user
-        );
+        if ($this->form_validation->run() == false) {
+            if (userdata('role') == 1) {
+                $user = $this->base->getUserAdmin('user', ['id_user' => userdata('id_user')])->row();
+            } else {
+                $user = $this->anggota->getById(userdata('anggota_id'))->row();
+            }
 
-        $this->template->load('template', 'profil/update', $data);
+            $data = array(
+                'title' => 'Profile',
+                'row' => $user
+            );
+
+            $this->template->load('template', 'profil/update', $data);
+        } else {
+            $post = $this->input->post(null, TRUE);
+
+            $this->base->changePassword($post);
+
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Password berhasil diganti');
+            }
+
+            redirect('Profile');
+        }
     }
 
     public function proses()
@@ -63,20 +82,6 @@ class Profile extends CI_Controller
         $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
     }
 
-    public function changePassword()
-    {
-        $this->_validasi;
-
-        if ($this->form_validation->run() == false) {
-            set_pesan('Password tidak sama', false);
-            redirect('profile');
-        } else {
-            $post = $this->input->post(null, TRUE);
-
-            var_dump($post);
-        }
-    }
-
     public function prosesFoto()
     {
         $post = $this->input->post(null, TRUE);
@@ -94,7 +99,7 @@ class Profile extends CI_Controller
             $post['foto'] = $this->upload->data('file_name');
             $this->anggota->foto($post);
             if ($this->db->affected_rows() > 0) {
-                set_pesan('Data Berhasil Dismpan');
+                set_pesan('Berhasil mengganti foto');
             }
             // var_dump($post);
             redirect('profile');
