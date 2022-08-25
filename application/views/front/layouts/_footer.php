@@ -5,9 +5,9 @@
          <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-footer-widget ab_widgets">
                <div class="f_title">
-                  <h3>Garsansnews.com</h3>
+                  <h3>Kwarcab Cilegon</h3>
                </div>
-               <p>Garsansnews merupakan portal berita kekinian</p>
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est in deleniti assumenda praesentium, velit aspernatur nulla aperiam molestiae enim quo ipsam eligendi corrupti dolorem quos nostrum! Id rerum distinctio consequatur quae, illo placeat sunt sit molestiae, in, accusamus accusantium eveniet!</p>
             </div>
          </div>
          <div class="col-lg-4 col-md-6 col-sm-6">
