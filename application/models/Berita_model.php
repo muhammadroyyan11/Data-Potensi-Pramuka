@@ -185,7 +185,7 @@ class Berita_model extends CI_Model
 
     public function getBerita($seo_title)
     {
-        $this->db->from('Berita');
+        $this->db->from('berita');
         $this->db->join('kategori', 'kategori.id_kategori = berita.kategori_id');
         $this->db->where('seo_judul', $seo_title);
         return $this->db->get()->row();

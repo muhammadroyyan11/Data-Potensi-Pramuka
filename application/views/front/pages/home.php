@@ -17,7 +17,7 @@
                            <a class="gad_btn" href="<?= base_url("blog/category/$f->slug") ?>"><?= $f->nama_kategori ?></a>
                            <a href="<?= base_url("blog/read/$f->seo_judul") ?>"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
                         </div>
-                        <h1 class="font-weight-light text-center"><?= $f->judul ?></h1>
+                        <h1 class="font-weight-light text-center"><?= $f->seo_judul ?></h1>
                         <p><?= character_limiter($f->isi, 200) ?></p>
                         <div class="row">
                            <div class="col text-center">
