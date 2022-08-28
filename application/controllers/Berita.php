@@ -10,6 +10,7 @@ class Berita extends CI_Controller
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Berita_model', 'berita');
+        $this->load->model('Kategori_model', 'kategori');
     }
 
     public function index()
@@ -24,8 +25,10 @@ class Berita extends CI_Controller
 
     public function add()
     {
+        $kategori = $this->kategori->get();
         $data = array(
             'title' => 'Upload Data Berita',
+            'kategori' => $kategori
         );
         $this->template->load('template', 'berita/add', $data);
     }

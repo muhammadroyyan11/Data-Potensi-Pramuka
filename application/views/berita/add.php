@@ -21,6 +21,21 @@
                         <div class="col-12">
                             <div class="form-group row">
                                 <div class="col-md-4">
+                                    <span>Kategori Berita</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="kategori" class="form-control">
+                                        <option value="">-- Pilih Kategori --</option>
+                                        <?php foreach ($kategori as $key => $data) { ?>
+                                            <option value="<?= $data->id_kategori ?>"><?= $data->nama_kategori ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
                                     <span>Penulis</span>
                                 </div>
                                 <div class="col-md-8">

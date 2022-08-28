@@ -77,8 +77,47 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Featured (Ditampilkan di tampilan home slide)</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="featured" id="" class="form-control">
+                                        <option value="N">Tidak</option>
+                                        <option value="Y">Tampilkan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Choice</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="choice" id="" class="form-control">
+                                        <option value="N">Tidak</option>
+                                        <option value="Y">Ya</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Trending</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="thread" id="" class="form-control">
+                                        <option value="N">Tidak</option>
+                                        <option value="Y">Ya</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-10 offset-md-9">
-                            <button type="submit" class="btn btn-primary mr-1 mb-1">Ajukan</button>
+                            <button type="submit" class="btn btn-primary mr-1 mb-1">Simpan</button>
                             <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
                         </div>
                     </div>

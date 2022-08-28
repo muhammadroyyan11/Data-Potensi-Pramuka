@@ -25,7 +25,9 @@ class Berita_model extends CI_Model
             'foto' => $post['lampiran'],
             'status' => 0,
             'seo_judul' => slugify($post['judul']),
-            'user_id' => userdata('id_user')
+            'user_id' => userdata('id_user'),
+            'kategori_id' => $post['kategori'],
+            'date' => date('Y-m-d')
         ];
         $this->db->insert('berita', $params);
     }
@@ -36,6 +38,9 @@ class Berita_model extends CI_Model
             'judul' => $post['judul'],
             'isi' => $post['isi'],
             'status' => $post['status'],
+            'featured' => $post['featured'],
+            'choice' => $post['choice'],
+            'thread' => $post['thread']
         ];
 
         if ($post['editor'] != null) {
