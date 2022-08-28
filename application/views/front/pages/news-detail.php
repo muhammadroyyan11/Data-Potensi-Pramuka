@@ -21,7 +21,7 @@
       <div class="row">
          <div class="col-lg-8">
             <div class="main_blog_details">
-               <img class="img-fluid" src="<?= base_url() ?>assets/uploads/berita/<?= $posting->foto ?> ?>" alt="">
+               <img class="img-fluid" src="<?= base_url("assets/uploads/berita/$posting->foto") ?>" alt="">
                <h4><?= $posting->judul ?></h4>
                <div class="user_details">
                   <div class="float-left">

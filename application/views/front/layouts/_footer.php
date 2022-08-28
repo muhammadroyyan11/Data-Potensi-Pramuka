@@ -54,7 +54,7 @@
          <p class="col-lg-8 col-md-8 footer-text">
             Copyright &copy;<script>
                document.write(new Date().getFullYear());
-            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Kwatir Cabang Kota Cilegon</a>
+            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="<?= site_url('auth') ?>" target="_blank">Kwatir Cabang Kota Cilegon</a>
          </p>
       </div>
    </div>
