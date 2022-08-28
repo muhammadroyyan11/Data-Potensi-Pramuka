@@ -30,6 +30,8 @@
                <a class="nav-link" href="#">About</a>
             </li>
          </ul>
+         <div class="custom-control custom-switch mr-5">
+         </div>
          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
                <a class="nav-link" href="#">

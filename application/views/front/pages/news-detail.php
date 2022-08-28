@@ -1,13 +1,13 @@
 <!--================Home Banner Area =================-->
 <section class="banner_area">
-   <div class="banner_inner d-flex align-items-center" style="background-image: url(<?= base_url('images/banner/' . $banner->photo) ?>)">
+   <div class="banner_inner d-flex align-items-center" style="background-image: url(<?= base_url('images/banner/') ?>)">
       <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
       <div class="container">
          <div class="banner_content text-center">
             <h2>News Details</h2>
             <div class="page_link">
                <a href="<?= base_url('home') ?>">Home</a>
-               <a href="<?= base_url("blog/read/$posting->seo_title") ?>">News Details</a>
+               <a href="<?= base_url("blog/read/$posting->seo_judul") ?>">News Details</a>
             </div>
          </div>
       </div>
@@ -21,11 +21,11 @@
       <div class="row">
          <div class="col-lg-8">
             <div class="main_blog_details">
-               <img class="img-fluid" src="<?= base_url("images/posting/large/$posting->photo") ?>" alt="">
-               <h4><?= $posting->title ?></h4>
+               <img class="img-fluid" src="<?= base_url() ?>assets/uploads/berita/<?= $posting->foto ?> ?>" alt="">
+               <h4><?= $posting->judul ?></h4>
                <div class="user_details">
                   <div class="float-left">
-                     <a class="gad_btn" href="<?= base_url("blog/category/$posting->slug") ?>"><?= $posting->category_name ?></a>
+                     <a class="gad_btn" href="<?= base_url("blog/category/$posting->slug") ?>"><?= $posting->nama_kategori ?></a>
                   </div>
                   <div class="float-right">
                      <div class="media">
@@ -35,10 +35,10 @@
                      </div>
                   </div>
                </div>
-               <p><?= $posting->content ?></p>
+               <p><?= $posting->isi ?></p>
             </div>
          </div>
-         
+
          <!-- ================Sidebar================== -->
          <?php $this->load->view('front/layouts/_sidebar', $trending) ?>
          <!-- ================End of Sidebar================== -->
@@ -47,4 +47,3 @@
    </div>
 </section>
 <!--================End News Area =================-->
-	

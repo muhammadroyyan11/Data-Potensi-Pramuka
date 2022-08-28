@@ -8,10 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<!-- <link rel="icon" href="<?= base_url("images/favicon/$favicon->photo") ?>" type="image/png"> -->
 	<title><?= $title ?> - Kwatir Cabang Kota Cilegon</title>
 	<!-- Bootstrap CSS -->
 	<link href="<?= base_url() ?>assets/front/css/bootstrap.css" rel="stylesheet">
+	<link href="<?= base_url() ?>assets/front/css/dark-mode.css" rel="stylesheet">
 	<link href="<?= base_url() ?>assets/front/vendors/linericon/style.css" rel="stylesheet">
 	<link href="<?= base_url() ?>assets/front/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url() ?>assets/front/vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">

@@ -52,11 +52,9 @@
             <div class="f_boder"></div>
          </div>
          <p class="col-lg-8 col-md-8 footer-text">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>
                document.write(new Date().getFullYear());
-            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Garsansnews</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Kwatir Cabang Kota Cilegon</a>
          </p>
       </div>
    </div>
