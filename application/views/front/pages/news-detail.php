@@ -25,11 +25,14 @@
                <h4><?= $posting->judul ?></h4>
                <div class="user_details">
                   <div class="float-left">
-                     <a class="gad_btn" href="<?= base_url("blog/category/$posting->slug") ?>"><?= $posting->nama_kategori ?></a>
+                     Kategori : <a href="<?= base_url("blog/category/$popular->slug") ?>"><?= $posting->nama_kategori ?></a>
+                     | Editor : <?= $posting->editor ?>
+                     <a href=""></a>
                   </div>
                   <div class="float-right">
                      <div class="media">
                         <div class="media-body">
+
                            <p><?= mediumdate_indo($posting->date) ?></p>
                         </div>
                      </div>

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-light navbar-expand-lg navbar-light bg-light fixed-top home">
    <div class="container">
-      <a class="navbar-brand d-flex w-50 mr-auto" href="<?= site_url('home') ?>">
-         <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" class="d-inline-block align-top" height="30" alt="">
-         &nbsp;Bootstrap
+      <a class="d-flex w-50" href="<?= site_url('home') ?>">
+         <img src="<?= base_url() ?>assets/images/logo.png" width="200" class="d-inline-block align-top" height="60" alt="">
+
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
          <span class="navbar-toggler-icon"></span>
