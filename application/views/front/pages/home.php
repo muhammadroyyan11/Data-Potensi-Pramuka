@@ -9,7 +9,7 @@
                                        } ?> ">
                <div class="row align-items-center my-5">
                   <div class="col-lg-8">
-                     <img class="img-fluid mb-4 mb-lg-0" src="<?= base_url() ?>assets/uploads/berita/<?= $f->foto ?>" alt="">
+                     <img class="img-fluid mb-4 mb-lg-0" src="<?= base_url() ?>assets/uploads/berita/<?= $f->foto ?>" alt="" width="800" height="800">
                   </div>
                   <div class="col-lg-4">
                      <div class="container">

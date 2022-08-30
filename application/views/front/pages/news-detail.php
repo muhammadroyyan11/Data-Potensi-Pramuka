@@ -27,7 +27,6 @@
                   <div class="float-left">
                      Kategori : <a href="<?= base_url("blog/category/$popular->slug") ?>"><?= $posting->nama_kategori ?></a>
                      | Editor : <?= $posting->editor ?>
-                     <a href=""></a>
                   </div>
                   <div class="float-right">
                      <div class="media">

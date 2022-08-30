@@ -81,6 +81,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
 
         if ($this->form_validation->run() == false) {
+            $data['wilayah'] = $this->base_model->get('wilayah')->result();
             $data['title'] = 'Buat Akun';
             $this->template->load('tempauth', 'auth/register', $data);
         } else {

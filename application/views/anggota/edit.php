@@ -1,7 +1,7 @@
 <div class="col-md-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Tambah Data Anggota Potensi <?= $row->nama_wilayah ?></h4>
+            <h4 class="card-title">Tambah Data Anggota Potensi</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -123,23 +123,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <span>Potensi</span>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="position-relative has-icon-left">
-                                        <select class="select2 form-control" id="example" name="potensi[]" multiple="multiple">
-                                            <?php foreach ($this->db->get('potensi')->result() as $data) { ?>
-                                                <option value="<?php echo $data->id_potensi ?>" <?php if (in_array($data->id_potensi, $potensi)) echo 'selected' ?>><?php echo $data->nama_potensi ?></option>
-                                            <?php
-                                            } ?>
-                                        </select>
+                        <?php if (userdata('role') == 2) { ?>
+                            <div class="col-12">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span>Potensi</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="position-relative has-icon-left">
+                                            <select class="select2 form-control" id="example" name="potensi[]" multiple="multiple">
+                                                <?php foreach ($this->db->get('potensi')->result() as $data) { ?>
+                                                    <option value="<?php echo $data->id_potensi ?>" <?php if (in_array($data->id_potensi, $potensi)) echo 'selected' ?>><?php echo $data->nama_potensi ?></option>
+                                                <?php
+                                                } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <hr>
                         <div class="col-md-8 offset-md-4">
                             <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>

@@ -48,7 +48,7 @@
          <ul class="list">
             <li><a href="#"><i class="fa fa-facebook"></i>kwarcabCilegon.com<span>Like our page</span></a></li>
             <li><a href="#"><i class="fa fa-twitter"></i>kwarcabCilegon.com<span>Follow Us</span></a></li>
-            <li><a href="#"><i class="fa fa-youtube-play"></i>kwarcabCilegon.com<span>Subscribe</span></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i>kwarcabCilegon.com<span>Subscribe</span></a></li>
          </ul>
       </aside>
 

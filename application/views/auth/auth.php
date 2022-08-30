@@ -32,6 +32,7 @@
                                     </div>
                                     <label for="user-password">Password</label>
                                 </fieldset>
+                                <a href="<?= site_url('auth/register') ?>"><span>Register</span></a>
                                 <!-- <a href="<?= site_url('auth/register') ?>" class="btn btn-outline-primary float-left btn-inline">Register</a> -->
                                 <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>
                                 <?= form_close(); ?>
@@ -39,7 +40,7 @@
                         </div>
                         <div class="login-footer">
                             <div class="divider">
-                                <div class="divider-text">&copy; POTENSI ANGGOTA GERAKAN PRAMUKA</div>
+                                <div class="divider-text">&copy; POTENSI ANGGOTA</div>
                             </div>
                         </div>
                     </div>

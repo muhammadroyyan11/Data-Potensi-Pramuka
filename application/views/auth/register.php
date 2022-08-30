@@ -41,6 +41,17 @@
                                     <input value="<?= set_value('no_telp'); ?>" type="text" name="no_telp" class="form-control form-control-user" placeholder="Telepon">
                                     <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                 </div>
+                                <div class="form-label-group">
+                                    <select name="kwarcab" id="" class="form-control">
+                                        <option value="" class="text-center">-- Pilih Kwarran --</option>
+                                        <?php
+                                        foreach ($wilayah as $key => $data) { ?>
+                                            <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
+                                        <?php
+                                        } ?>
+                                    </select>
+                                    <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <fieldset class="checkbox">

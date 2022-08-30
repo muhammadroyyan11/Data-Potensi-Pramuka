@@ -116,7 +116,6 @@ class Anggota extends CI_Controller
             $data['row'] = $this->base->getWilayahById(userdata('wilayah'))->row();
             $potensi = $this->anggota->getPotensiAnggota($id)->result_array();
             $data['user'] = $this->anggota->get($id);
-            // var_dump($potensi);
             $arr = array();
             foreach ($potensi as $datas) {
                 array_push($arr, $datas['potensi_id']);

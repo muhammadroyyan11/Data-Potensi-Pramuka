@@ -128,22 +128,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <span>Potensi</span>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="position-relative has-icon-left">
-                                        <select class="select2 form-control" name="potensi[]" multiple="multiple">
-                                            <?php foreach ($potensi as $key => $data) { ?>
-                                                <option value="<?= $data->id_potensi ?>"><?= $data->nama_potensi ?></option>
-                                            <?php } ?>
-                                        </select>
+                        <?php
+                        if (userdata('role') == 2) { ?>
+                            <div class="col-12">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <span>Potensi</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="position-relative has-icon-left">
+                                            <select class="select2 form-control" name="potensi[]" multiple="multiple">
+                                                <?php foreach ($potensi as $key => $data) { ?>
+                                                    <option value="<?= $data->id_potensi ?>"><?= $data->nama_potensi ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php }
+                        ?>
+
                         <hr>
                         <div class="col-md-8 offset-md-4">
                             <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
