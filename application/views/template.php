@@ -55,6 +55,7 @@
 
     <!-- SELECT 2  -->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/app-assets/vendors/css/forms/select/select2.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <!-- END: Head-->
 
@@ -196,6 +197,8 @@
                     </li>
                     <li <?= $this->uri->segment(1) == 'wilayah' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('wilayah') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Wilayah</span></a>
                     </li>
+                    <li <?= $this->uri->segment(1) == 'sosmed' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('sosmed') ?>"><i class="feather icon-save"></i><span class="menu-title" data-i18n="Laporan">Sosial Media</span></a>
+                    </li>
                     <li class=" navigation-header"><span>User Management</span>
                     </li>
                     <li <?= $this->uri->segment(1) == 'user' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('user') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">User Management</span></a>
@@ -208,8 +211,13 @@
                     </li>
                     <li class=" navigation-header"><span>Data jenis</span>
                     </li>
-                    <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Potensi</span></a>
-                    </li>
+                    <?php if (in_array("gudep", $this->session->userdata('login_session')['potensi'])) { ?>
+                        <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi/gudep') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Potensi Gudep</span></a>
+                        <?php }
+                    if (in_array("saka", $this->session->userdata('login_session')['potensi'])) { ?>
+                        <li <?= $this->uri->segment(1) == 'DataSaka' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('DataSaka') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Potensi Saka</span></a>
+                        </li>
+                    <?php } ?>
                 <?php } ?>
 
 

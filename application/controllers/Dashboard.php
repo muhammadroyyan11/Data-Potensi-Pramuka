@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller
         $getLaporan = $this->laporan->get()->result();
         // $getLogin = $this->anggota->getPotensiAnggota(userdata('id_user'))->result();
 
+        // var_dump($this->session->userdata('login_session')['potensi']);
         $data = array(
             'title' => 'Dashboard',
             'berita' => $get,

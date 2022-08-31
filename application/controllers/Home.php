@@ -25,6 +25,7 @@ class Home extends CI_Controller
       $data['popular']     = $this->berita->getMostPopular();
       $data['trending']    = $this->berita->getThread();
       $data['lastNews']    = $this->berita->getLastNews();
+      $data['sosmed']      = $this->base_model->get('sosmed')->result();
       // $data['video_game']  = $this->posting->getVideoGames();
       $data['category']    = $this->kategori->get();
 

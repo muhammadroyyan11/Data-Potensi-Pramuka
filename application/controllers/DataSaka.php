@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Potensi extends CI_Controller
+class DataSaka extends CI_Controller
 {
 
     public function __construct()
@@ -16,10 +16,10 @@ class Potensi extends CI_Controller
         $this->wilayah = $this->input->get('wilayah');
     }
 
-    public function gudep()
+    public function index()
     {
-        $user = $this->anggota->getById(userdata('anggota_id'))->row();
         $potensi = $this->anggota->getPotensiAnggota(userdata('id_user'))->result_array();
+        $user = $this->anggota->getById(userdata('anggota_id'))->row();
 
         $arr = [];
 
@@ -32,8 +32,7 @@ class Potensi extends CI_Controller
             'potensi' => $arr,
             'row' => $user
         );
-
-        $this->template->load('template', 'biodata/gudep', $data);
+        $this->template->load('template', 'biodata/saka', $data);
     }
 
     public function savePotensi()
@@ -46,6 +45,6 @@ class Potensi extends CI_Controller
             set_pesan('Data berhasil diubah.');
         }
 
-        redirect('potensi/gudep');
+        redirect('DataSaka');
     }
 }

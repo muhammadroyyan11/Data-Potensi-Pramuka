@@ -40,9 +40,9 @@
                   <h3>Social Networks</h3>
                </div>
                <div class="col-lg-4 col-md-4 footer-social icon mx-auto">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <?php foreach ($sosmed as $key => $data) { ?>
+                     <a href="<?= $data->link ?>" target="_blank"><i class="fa <?= $data->icon ?>"></i></a>
+                  <?php } ?>
                </div>
             </div>
          </div>

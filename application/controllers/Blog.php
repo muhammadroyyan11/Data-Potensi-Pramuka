@@ -24,6 +24,7 @@ class Blog extends CI_Controller
       $data['popular']     = $this->berita->getMostPopular();
       $data['trending']    = $this->berita->getThread();
       $data['category']    = $this->kategori->get();
+      $data['sosmed']      = $this->base_model->get('sosmed')->result();
 
       $data['total_rows']  = $this->berita->countPosting();
       $data['pagination']  = $this->berita->makePagination(
@@ -44,6 +45,7 @@ class Blog extends CI_Controller
       $data['popular']     = $this->berita->getMostPopular();
       $data['trending']    = $this->berita->getThread();
       $data['category']    = $this->kategori->get();
+      $data['sosmed']      = $this->base_model->get('sosmed')->result();
 
       $data['total_rows']  = $this->berita->countPosting($category);
       $data['pagination']  = $this->berita->makePagination(
@@ -69,6 +71,7 @@ class Blog extends CI_Controller
          $data['trending']    = $this->berita->getThread();
          $data['category']    = $this->kategori->get();
          $data['page']        = 'news-detail';
+         $data['sosmed']      = $this->base_model->get('sosmed')->result();
          $this->load->view('front/layouts/app', $data);
       } else {
          redirect(base_url('home'));

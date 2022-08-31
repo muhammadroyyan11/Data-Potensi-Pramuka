@@ -32,21 +32,15 @@
          <div class="custom-control custom-switch mr-5">
          </div>
          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <i class="fa fa-twitter"></i>
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <i class="fa fa-instagram"></i>
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <i class="fa fa-facebook"></i>
-               </a>
-            </li>
+            <?php
+            foreach ($sosmed as $key => $data) { ?>
+               <li class="nav-item">
+                  <a class="nav-link" href="<?= $data->link ?>" target="_blank">
+                     <i class="fa <?= $data->icon ?>"></i>
+                  </a>
+               </li>
+            <?php }
+            ?>
          </ul>
       </div>
    </div>

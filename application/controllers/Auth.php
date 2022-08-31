@@ -10,6 +10,7 @@ class Auth extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Auth_model', 'auth');
         $this->load->model('Base_model', 'base');
+        $this->load->model('Anggota_model', 'anggota');
     }
 
     private function _has_login()
@@ -41,13 +42,20 @@ class Auth extends CI_Controller
                         set_pesan('akun anda belum aktif/dinonaktifkan. Silahkan hubungi admin.', false);
                         redirect('auth');
                     } else {
+                        $potensi = $this->anggota->getPotensiAnggota($user_db['id_user'])->result_array();
+
+                        foreach ($potensi as $key => $data) {
+                            $arr[] = strtolower($data['nama_potensi']);
+                        }
+
                         $userdata = [
                             'user'  => $user_db['id_user'],
                             'role'  => $user_db['role'],
                             'wilayah' => $user_db['wilayah'],
                             'foto' => $user_db['foto'],
                             'anggota_id' => $user_db['anggota_id'],
-                            'timestamp' => time()
+                            'timestamp' => time(),
+                            'potensi' => $arr
                         ];
                         $this->session->set_userdata('login_session', $userdata);
                         redirect('dashboard');

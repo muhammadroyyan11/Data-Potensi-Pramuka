@@ -22,35 +22,13 @@
                                             <input type="hidden" id="first-name-vertical" class="form-control" name="id_anggota" value="<?= $row->id_anggota ?>" readonly>
                                         </div>
                                     </div>
-                                    <?php
-                                    if (in_array("gudep", $potensi)) { ?>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="email-id-icon">Nomor SK</label>
-                                                <input type="text" id="email-id-icon" class="form-control" name="no_sk" value="<?= (set_value('no_sk')) ? set_value('no_sk') : $row->no_sk ?>" placeholder="Nomor SK">
-                                            </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="email-id-icon">Nomor Gudep</label>
+                                            <input type="text" id="email-id-icon" class="form-control" name="no_gudep" value="<?= (set_value('no_gudep')) ? set_value('no_gudep') : $row->no_gudep ?>" placeholder="Nomor Gudep">
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="email-id-icon">Nomor Gudep</label>
-                                                <input type="text" id="email-id-icon" class="form-control" name="no_gudep" value="<?= (set_value('no_gudep')) ? set_value('no_gudep') : $row->no_gudep ?>" placeholder="Nomor Gudep">
-                                            </div>
-                                        </div>
-                                    <?php }
-                                    if (in_array("saka", $potensi)) { ?>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="password-icon">Jabatan</label>
-                                                <select name="jabatan" id="" class="form-control">
-                                                    <option value="">-- Pilih Jabatan --</option>
-                                                    <option value="Dewan Saka" <?= $row->jabatan == 'Dewan Saka' ? 'selected' : '' ?>>Dewan Saka</option>
-                                                    <option value="Pimpinan SAKA" <?= $row->jabatan == 'Pimpinan SAKA' ? 'selected' : '' ?>>Pimpinan SAKA</option>
-                                                    <option value="Pamong SAKA" <?= $row->jabatan == 'Pamong SAKA' ? 'selected' : '' ?>>Pamong SAKA</option>
-                                                    <option value="Instruktur SAKA" <?= $row->jabatan == 'Instruktur SAKA' ? 'selected' : '' ?>>Instruktur SAKA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
+                                    </div>
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-icon">Pangkalan</label>
@@ -109,37 +87,19 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if (in_array("saka", $potensi)) { ?>
+
+                                    <?php if (in_array("gudep", $potensi)) { ?>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="password-icon">Tingkatan Saka</label>
-                                                <select name="tingkatan_saka" id="" class="form-control">
-                                                    <option value="">-- Pilih Tingkatan --</option>
-                                                    <optgroup label="Penggalang">
-                                                        <option value="Terap" <?= $row->tingkatan_saka == 'Terap' ? 'selected' : '' ?>>Terap</option>
-                                                    </optgroup>
-                                                    <optgroup label="Penegak">
-                                                        <option value="Penegak Bantara" <?= $row->tingkatan_saka == 'Penegak Bantara' ? 'selected' : '' ?>>Penegak Bantara</option>
-                                                        <option value="Penegak Laksana" <?= $row->tingkatan_saka == 'Penegak Laksana' ? 'selected' : '' ?>>Penegak Laksana</option>
-                                                    </optgroup>
-                                                    <optgroup Label="Pandega">
-                                                        <option value="Pandega" <?= $row->tingkatan_saka == 'Pandega' ? 'selected' : '' ?>>Pandega</option>
-                                                    </optgroup>
+                                                <label for="password-icon">Penghargaan</label>
+                                                <select name="penghargaan" id="" class="form-control">
+                                                    <option value="">-- Pilih Penghargaan --</option>
+                                                    <option value="Garuda" <?= $row->penghargaan == 'Garuda' ? 'selected' : '' ?>>Garuda</option>
+                                                    <option value="Teladan" <?= $row->penghargaan == 'Teladan' ? 'selected' : '' ?>>Teladan</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    <?php } ?>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="password-icon">Penghargaan</label>
-                                            <select name="penghargaan" id="" class="form-control">
-                                                <option value="">-- Pilih Penghargaan --</option>
-                                                <option value="Garuda" <?= $row->penghargaan == 'Garuda' ? 'selected' : '' ?>>Garuda</option>
-                                                <option value="Teladan" <?= $row->penghargaan == 'Teladan' ? 'selected' : '' ?>>Teladan</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <?php if (in_array("gudep", $potensi)) { ?>
+
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="password-icon">Kursus pembina</label>

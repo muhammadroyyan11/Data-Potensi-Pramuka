@@ -46,9 +46,9 @@
             <h2>Social Networks</h2>
          </div>
          <ul class="list">
-            <li><a href="#"><i class="fa fa-facebook"></i>kwarcabCilegon.com<span>Like our page</span></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i>kwarcabCilegon.com<span>Follow Us</span></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i>kwarcabCilegon.com<span>Subscribe</span></a></li>
+            <?php foreach ($sosmed as $key => $data) { ?>
+               <li><a href="<?= $data->link ?>" target="_blank"><i class="fa <?= $data->icon ?>"></i><?= $data->nama_sosmed ?><span></span></a></li>
+            <?php } ?>
          </ul>
       </aside>
 

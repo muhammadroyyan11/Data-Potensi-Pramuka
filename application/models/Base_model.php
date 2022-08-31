@@ -49,6 +49,21 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function getAnggota($where = null)
+    {
+        // $this->db->select('*');
+        // $this->db->distinct();
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('anggota', 'anggota.id_anggota = user.anggota_id');
+        $this->db->where('role', 3);
+        $this->db->order_by('id_user', 'desc');
+        if ($where != null) {
+            $this->db->where('kwarcab', $where);
+        }
+        return $this->db->get();
+    }
+
     public function getExport($where = null)
     {
         $this->db->select('*');

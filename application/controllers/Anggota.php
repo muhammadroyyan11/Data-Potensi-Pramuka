@@ -21,10 +21,9 @@ class Anggota extends CI_Controller
     public function index()
     {
         $data['title'] = "Data Anggota";
-        $data['users'] = $this->base_model->getWhere(userdata('wilayah'))->result_array();
+        $data['users'] = $this->base_model->getAnggota(userdata('wilayah'))->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
-        // var_dump(userdata('wilayah'));
-        // print_r($data['users'][0]);
+
         $this->template->load('template', 'anggota/data', $data);
     }
 
