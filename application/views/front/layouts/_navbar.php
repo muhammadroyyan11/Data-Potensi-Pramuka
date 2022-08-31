@@ -26,7 +26,7 @@
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#">About</a>
+               <a class="nav-link" href="<?= site_url('contact') ?>">About</a>
             </li>
          </ul>
          <div class="custom-control custom-switch mr-5">
