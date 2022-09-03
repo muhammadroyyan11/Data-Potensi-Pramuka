@@ -121,6 +121,7 @@ class Anggota extends CI_Controller
             }
 
             $data['potensi'] = $arr;
+            $data['wilayah'] = $this->base_model->get('wilayah')->result();
 
             $this->template->load('template', 'anggota/edit', $data);
         } else {
