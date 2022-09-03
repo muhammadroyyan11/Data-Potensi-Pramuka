@@ -65,7 +65,7 @@ class Laporan extends CI_Controller
         $config['max_size']             = 10000;
         $config['max_width']            = 10000;
         $config['max_height']           = 10000;
-        $config['file_name']            = $this->input->post('judul_kegiatan') . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+        $config['file_name']            = slugify($post['judul_kegiatan']) . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
 
