@@ -46,7 +46,7 @@
                                             </td>
                                             <td>
                                                 <a href="<?= base_url('pengajuanBerita/pengajuan/') . $data->id_berita ?>" class="btn btn-circle btn-sm btn-primary"><i class="fa fa-fw fa-info"></i></a>
-                                                <a href="<?= base_url('pengajuanBerita/delete/') . $data->id_berita ?>" onclick="return confirm('Yakin ingin hapus?')" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
+                                                <a href="<?= base_url('pengajuanBerita/del/') . $data->id_berita ?>" onclick="return confirm('Yakin ingin hapus?')" class="btn btn-circle btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php

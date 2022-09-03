@@ -155,7 +155,6 @@ class Anggota extends CI_Controller
 
     public function delete($getId)
     {
-        // $id = encode_php_tags($getId);
         if ($this->base_model->delete('user', 'id_user', $getId)) {
             set_pesan('data berhasil dihapus.');
         } else {

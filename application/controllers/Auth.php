@@ -102,13 +102,15 @@ class Auth extends CI_Controller
             $input['created_at']    = time();
 
             $query = $this->base->insert('user', $input);
-            if ($query) {
-                set_pesan('daftar berhasil. Selanjutnya silahkan hubungi admin untuk mengaktifkan akun anda.');
-                redirect('auth');
-            } else {
-                set_pesan('gagal menyimpan ke database', false);
-                redirect('register');
-            }
+
+            echo $query->id_user;
+            // if ($query) {
+            //     set_pesan('daftar berhasil. Selanjutnya silahkan hubungi admin untuk mengaktifkan akun anda.');
+            //     redirect('auth');
+            // } else {
+            //     set_pesan('gagal menyimpan ke database', false);
+            //     redirect('register');
+            // }
         }
     }
 }
