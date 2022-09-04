@@ -77,9 +77,9 @@ class User extends CI_Controller
         }
     }
 
-    public function edit($getId)
+    public function edit($id)
     {
-        $id = encode_php_tags($getId);
+        // $id = encode_php_tags($getId);
         $this->_validasi('edit');
 
         if ($this->form_validation->run() == false) {

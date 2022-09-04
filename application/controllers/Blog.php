@@ -11,8 +11,10 @@ class Blog extends CI_Controller
       // $this->load->model('banner_model', 'banner', true);
       // $this->load->model('berita_model', 'posting', true);
       // $this->load->model('category_model', 'category', true);
+      date_default_timezone_set('Asia/Jakarta');
       $this->load->model('Berita_model', 'berita');
       $this->load->model('Kategori_model', 'kategori');
+      $this->load->model('Base_model', 'base', true);
    }
 
    public function index($page = null)
@@ -22,6 +24,7 @@ class Blog extends CI_Controller
       $data['category']    = $this->kategori->get();
       $data['post']        = $this->berita->getAllPosting($page);
       $data['popular']     = $this->berita->getMostPopular();
+      $data['about']       = $this->base->get('about')->row();
       $data['trending']    = $this->berita->getThread();
       $data['category']    = $this->kategori->get();
       $data['sosmed']      = $this->base_model->get('sosmed')->result();
@@ -46,6 +49,7 @@ class Blog extends CI_Controller
       $data['trending']    = $this->berita->getThread();
       $data['category']    = $this->kategori->get();
       $data['sosmed']      = $this->base_model->get('sosmed')->result();
+      $data['about']       = $this->base->get('about')->row();
 
       $data['total_rows']  = $this->berita->countPosting($category);
       $data['pagination']  = $this->berita->makePagination(
@@ -69,6 +73,7 @@ class Blog extends CI_Controller
          // $data['banner']      = $this->banner->getBanner();
          $data['popular']     = $this->berita->getMostPopular();
          $data['trending']    = $this->berita->getThread();
+         $data['about']       = $this->base->get('about')->row();
          $data['category']    = $this->kategori->get();
          $data['page']        = 'news-detail';
          $data['sosmed']      = $this->base_model->get('sosmed')->result();

@@ -7,7 +7,7 @@
                <div class="f_title">
                   <h3>Kwarcab Cilegon</h3>
                </div>
-               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est in deleniti assumenda praesentium, velit aspernatur nulla aperiam molestiae enim quo ipsam eligendi corrupti dolorem quos nostrum! Id rerum distinctio consequatur quae, illo placeat sunt sit molestiae, in, accusamus accusantium eveniet!</p>
+               <p><?= character_limiter($about->description, 350) ?></p>
             </div>
          </div>
          <div class="col-lg-4 col-md-6 col-sm-6">

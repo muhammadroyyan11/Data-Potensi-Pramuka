@@ -12,8 +12,38 @@ class Fungsi
 
     public function count_gudep()
     {
-        $this->ci->load->model('anggota_m', 'berita');
-        return $this->ci->berita->get()->num_rows();
+        $this->ci->load->model('anggota_model', 'anggota');
+
+        $wilayah = array('wilayah' => userdata('wilayah'));
+        $potensi = array('potensi_id' => 1);
+
+        return $this->ci->anggota->getGudepCount($wilayah, $potensi)->num_rows();
+    }
+
+    public function count_saka()
+    {
+        $this->ci->load->model('anggota_model', 'anggota');
+
+        $wilayah = array('wilayah' => userdata('wilayah'));
+        $potensi = array('potensi_id' => 2);
+
+        return $this->ci->anggota->getGudepCount($wilayah, $potensi)->num_rows();
+    }
+
+    public function count_anggota()
+    {
+        $this->ci->load->model('base_model', 'base');
+
+        return $this->ci->base->getAnggota(userdata('wilayah'))->num_rows();
+    }
+
+    public function count_laporan()
+    {
+        $this->ci->load->model('laporan_model', 'laporan');
+
+        $where = array('user_id' => userdata('id_user'));
+
+        return $this->ci->laporan->get($where)->num_rows();
     }
 
     public function count_user()

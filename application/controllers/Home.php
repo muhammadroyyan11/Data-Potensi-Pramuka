@@ -11,7 +11,9 @@ class Home extends CI_Controller
       // $this->load->model('banner_model', 'banner', true);
       // $this->load->model('posting_model', 'posting', true);
       // $this->load->model('category_model', 'category', true);
+      date_default_timezone_set('Asia/Jakarta');
       $this->load->model('Berita_model', 'berita');
+      $this->load->model('Base_model', 'base', true);
       $this->load->model('Kategori_model', 'kategori');
    }
 
@@ -25,6 +27,7 @@ class Home extends CI_Controller
       $data['popular']     = $this->berita->getMostPopular();
       $data['trending']    = $this->berita->getThread();
       $data['lastNews']    = $this->berita->getLastNews();
+      $data['about']       = $this->base->get('about')->row();
       $data['sosmed']      = $this->base_model->get('sosmed')->result();
       // $data['video_game']  = $this->posting->getVideoGames();
       $data['category']    = $this->kategori->get();

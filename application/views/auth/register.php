@@ -43,14 +43,14 @@
                                 </div>
                                 <div class="form-label-group">
                                     <select name="kwarcab" id="" class="form-control">
-                                        <option value="" class="text-center">-- Pilih Kwarran --</option>
+                                        <option value="null" class="text-center">-- Pilih Kwarran --</option>
                                         <?php
                                         foreach ($wilayah as $key => $data) { ?>
                                             <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
                                         <?php
                                         } ?>
                                     </select>
-                                    <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
+                                    <?= form_error('kwarcab', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12">

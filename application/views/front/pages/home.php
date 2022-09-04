@@ -15,7 +15,7 @@
                      <div class="container">
                         <div class="date text-center">
                            <a class="gad_btn" href="<?= base_url("blog/category/$f->slug") ?>"><?= $f->nama_kategori ?></a>
-                           <a href="<?= base_url("blog/read/$f->seo_judul") ?>"><i class="fa fa-calendar" aria-hidden="true"></i>March 14, 2018</a>
+                           <a href="<?= base_url("blog/read/$f->seo_judul") ?>"><i class="fa fa-calendar" aria-hidden="true"></i><?= mediumdate_indo($f->date) ?></a>
                         </div>
                         <h1 class="font-weight-light text-center"><?= $f->seo_judul ?></h1>
                         <p><?= character_limiter($f->isi, 200) ?></p>
@@ -42,25 +42,7 @@
    <!--================ End Home Banner Area =================-->
 
    <!--================ Subscribe Area =================-->
-   <div class="card bg-light text-center">
-      <div class="card-body">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-6 col-sm-4">
-                  <h4 class="float-right my-2 text-dark">Subscribe to our Newsletter</h4>
-               </div>
-               <div class="col-lg-6 col-sm-8">
-                  <form action="" class="form-inline">
-                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <button class="genric-btn danger radius ml-2">Subscribe</button>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+   <hr>
    <!--================ End Subscribe Area =================-->
 
    <!--================ Choice Area =================-->

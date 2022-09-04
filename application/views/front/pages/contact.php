@@ -29,9 +29,7 @@
                             <div class="single-icon">
                                 <i class="fa fa-mobile"></i>
                                 <p>
-                                    Koopen Klojen: 0838-3437-6927<br>
-                                    Koopen Ijen: 0822-2942-7153<br>
-                                    <span>Everyday (7am-12pm)</span>
+                                    No Telp: <br><?= $about->telp ?><br>
                                 </p>
                             </div>
                         </div>
@@ -42,8 +40,7 @@
                             <div class="single-icon">
                                 <i class="fa fa-instagram"></i>
                                 <p>
-                                    Instagram: <br>@koopen_klojen<br>
-                                    @kopikoopenijen
+                                    Instagram: <br><?= $about->instagram ?>
                                 </p>
                             </div>
                         </div>
@@ -54,8 +51,7 @@
                             <div class="single-icon">
                                 <i class="fa fa-envelope-o"></i>
                                 <p>
-                                    Email: admin@kopikoopen.com<br>
-                                    <span>Web: www.kopikoopen.com</span>
+                                    Email: <br><?= $about->email ?><br>
                                 </p>
                             </div>
                         </div>
@@ -65,7 +61,7 @@
 
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <!-- Start Map -->
-                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro suscipit voluptatem corporis illum totam, molestias fugiat nemo nam. Iste enim cupiditate nostrum nisi eveniet corporis? Odit a modi iusto molestias, consequuntur libero rerum enim voluptatum assumenda ratione sint recusandae hic alias sunt tempora, suscipit rem. Accusamus voluptatum soluta eum, cumque esse tempora nesciunt non, minus saepe laudantium iusto unde ab amet neque. Adipisci voluptatibus quia deserunt inventore suscipit assumenda enim placeat, amet iusto optio aut reiciendis quibusdam earum commodi impedit molestias repudiandae cum perspiciatis provident similique odit! Temporibus, atque accusantium.</p>
+                        <p class="text-justify"><?= $about->description ?></p>
                         <!-- End Map -->
                     </div>
 

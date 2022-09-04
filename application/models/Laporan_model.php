@@ -14,7 +14,7 @@ class Laporan_model extends CI_Model
         } elseif ($this->input->get('to') != '') {
             $this->db->where('date <= ', $this->input->get('to'));
         } elseif ($this->input->get('wilayah') != '') {
-            $this->db->where('wilayah_id', $this->input->get('kasir'));
+            $this->db->where('wilayah_id', $this->input->get('wilayah'));
         }
         $this->db->join('wilayah', 'wilayah.id_wilayah = laporan.wilayah_id');
         $this->db->order_by('id_laporan', 'DESC');
@@ -32,7 +32,7 @@ class Laporan_model extends CI_Model
         } elseif ($this->input->get('to') != '') {
             $this->db->where('date <= ', $this->input->get('to'));
         } elseif ($this->input->get('wilayah') != '') {
-            $this->db->where('wilayah_id', $this->input->get('kasir'));
+            $this->db->where('wilayah_id', $this->input->get('wilayah'));
         }
         $this->db->join('wilayah', 'wilayah.id_wilayah = laporan.wilayah_id');
         $this->db->order_by('id_laporan', 'DESC');

@@ -28,6 +28,20 @@ class Anggota_model extends CI_Model
         $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
         return $this->db->get();
     }
+
+    public function getGudepCount($wilayah, $potensi = null)
+    {
+        $this->db->select('*');
+        $this->db->from('potensi_user');
+        $this->db->join('user as u', 'u.id_user = potensi_user.user_id');
+        $this->db->join('potensi', 'potensi.id_potensi = potensi_user.potensi_id');
+        $this->db->where($wilayah);
+        if ($potensi != null) {
+            $this->db->where($potensi);
+        }
+        return $this->db->get();
+    }
+
     public function getPotensiId($id)
     {
         $this->db->select('potensi_id');

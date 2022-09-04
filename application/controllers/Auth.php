@@ -87,6 +87,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
+        $this->form_validation->set_rules('kwarcab', 'Kwatir Cabang', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['wilayah'] = $this->base_model->get('wilayah')->result();
@@ -95,22 +96,35 @@ class Auth extends CI_Controller
         } else {
             $input = $this->input->post(null, true);
             unset($input['password2']);
-            $input['password']      = password_hash($input['password'], PASSWORD_DEFAULT);
-            $input['role']          = 'gudang';
-            $input['foto']          = 'user.png';
-            $input['is_active']     = 0;
-            $input['created_at']    = time();
 
-            $query = $this->base->insert('user', $input);
+            $data_anggota = [
+                'nama_anggota' => $input['nama'],
+                'kwarcab' => $input['kwarcab']
+            ];
 
-            echo $query->id_user;
-            // if ($query) {
-            //     set_pesan('daftar berhasil. Selanjutnya silahkan hubungi admin untuk mengaktifkan akun anda.');
-            //     redirect('auth');
-            // } else {
-            //     set_pesan('gagal menyimpan ke database', false);
-            //     redirect('register');
-            // }
+            $return_id =  $this->anggota->insert($data_anggota, 'anggota');
+
+            $input_user = [
+                'nama'          => $input['nama'],
+                'username'      => $input['username'],
+                'email'         => $input['email'],
+                'no_telp'       => $input['no_telp'],
+                'role'          => 3,
+                'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
+                'foto'          => 'user.png',
+                'wilayah'       => $input['kwarcab'],
+                'anggota_id'    => $return_id
+            ];
+
+            $return_user =  $this->anggota->insert($input_user, 'user');
+
+            if ($return_user) {
+                set_pesan('Register berhasil. Silahkan hubungi admin untuk mengaktifkan akun anda.');
+                redirect('auth');
+            } else {
+                set_pesan('gagal menyimpan ke database', false);
+                redirect('register');
+            }
         }
     }
 }

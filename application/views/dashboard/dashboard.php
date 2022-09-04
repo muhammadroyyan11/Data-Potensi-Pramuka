@@ -126,7 +126,7 @@
                                     <i class="feather icon-users text-primary font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1 mb-25">92.6k</h2>
+                            <h2 class="text-bold-700 mt-1 mb-25"><?= $this->fungsi->count_gudep(); ?></h2>
                             <p class="mb-0">Jumlah anggota <strong>Gudep</strong></p>
                         </div>
                         <div class="card-content">
@@ -142,7 +142,7 @@
                                     <i class="feather icon-users text-warning font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1 mb-25">92.6k</h2>
+                            <h2 class="text-bold-700 mt-1 mb-25"><?= $this->fungsi->count_saka(); ?></h2>
                             <p class="mb-0">Jumlah anggota <strong>SAKA</strong></p>
                         </div>
                         <div class="card-content">
@@ -155,11 +155,11 @@
                         <div class="card-header d-flex flex-column align-items-start pb-0">
                             <div class="avatar bg-rgba-primary p-50 m-0">
                                 <div class="avatar-content">
-                                    <i class="feather icon-credit-card text-success font-medium-5"></i>
+                                    <i class="feather icon-users text-success font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1 mb-25">92.6k</h2>
-                            <p class="mb-0">Jumlah Laporan Kegiatan</p>
+                            <h2 class="text-bold-700 mt-1 mb-25"><?= $this->fungsi->count_anggota(); ?></h2>
+                            <p class="mb-0">Anggota keseluruhan</p>
                         </div>
                         <div class="card-content">
                             <div id="subscribe-gain-chart"></div>
@@ -174,7 +174,7 @@
                                     <i class="feather icon-layout text-danger font-medium-5"></i>
                                 </div>
                             </div>
-                            <h2 class="text-bold-700 mt-1 mb-25">92.6k</h2>
+                            <h2 class="text-bold-700 mt-1 mb-25"><?= $this->fungsi->count_laporan(); ?></h2>
                             <p class="mb-0">Jumlah Laporan Kegiatan</p>
                         </div>
                         <div class="card-content">

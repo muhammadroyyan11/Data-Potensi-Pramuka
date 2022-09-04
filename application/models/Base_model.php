@@ -49,6 +49,20 @@ class Base_model extends CI_Model
         return $this->db->get();
     }
 
+    public function saveAbout($post)
+    {
+        $params = [
+            'instagram'   => $post['instagram'],
+            'description' => $post['about'],
+            'telp'        => $post['no_telp'],
+            'email'       => $post['email']
+
+        ];
+
+        $this->db->where('id_about', $post['id_about']);
+        $this->db->update('about', $params);
+    }
+
     public function getAnggota($where = null)
     {
         // $this->db->select('*');
