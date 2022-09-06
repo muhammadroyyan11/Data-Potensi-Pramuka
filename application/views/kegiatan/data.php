@@ -47,7 +47,6 @@
                                         <label for=""></label>
                                         <div class="input-group">
                                             <button type="submit" class="btn btn-primary">Filter kegiatan</button>
-                                            <!-- <input type="text"> -->
                                         </div>
                                     </div>
                                 </div>

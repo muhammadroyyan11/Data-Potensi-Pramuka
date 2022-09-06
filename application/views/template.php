@@ -163,7 +163,8 @@
                     </li>
                     <li class=" navigation-header"><span>Data jenis</span>
                     </li>
-                    <?php if (in_array("gudep", $this->session->userdata('login_session')['potensi'])) { ?>
+                    <?php
+                    if (in_array("gudep", $this->session->userdata('login_session')['potensi'])) { ?>
                         <li <?= $this->uri->segment(1) == 'potensi' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('potensi/gudep') ?>"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User Management">Data Potensi Gudep</span></a>
                         <?php }
                     if (in_array("saka", $this->session->userdata('login_session')['potensi'])) { ?>

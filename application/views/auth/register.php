@@ -18,32 +18,32 @@
                                 <?= $this->session->flashdata('pesan'); ?>
                                 <?= form_open('', ['class' => 'user']); ?>
                                 <div class="form-label-group">
-                                    <input autofocus="autofocus" autocomplete="off" value="<?= set_value('username'); ?>" type="text" name="username" class="form-control form-control-user" placeholder="Username">
+                                    <input autofocus="autofocus" required autocomplete="off" value="<?= set_value('username'); ?>" type="text" name="username" class="form-control form-control-user" placeholder="Username">
                                     <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <input type="password" name="password" class="form-control form-control-user" placeholder="Password">
+                                    <input type="password" required name="password" class="form-control form-control-user" placeholder="Password">
                                     <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <input type="password" name="password2" class="form-control form-control-user" placeholder="Konfirmasi Password">
+                                    <input type="password" required name="password2" class="form-control form-control-user" placeholder="Konfirmasi Password">
                                     <?= form_error('password2', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <input value="<?= set_value('nama'); ?>" type="text" name="nama" class="form-control form-control-user" placeholder="Nama">
+                                    <input value="<?= set_value('nama'); ?>" required type="text" name="nama" class="form-control form-control-user" placeholder="Nama">
                                     <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <input value="<?= set_value('email'); ?>" type="text" name="email" class="form-control form-control-user" placeholder="Email">
+                                    <input value="<?= set_value('email'); ?>" required type="text" name="email" class="form-control form-control-user" placeholder="Email">
                                     <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <input value="<?= set_value('no_telp'); ?>" type="text" name="no_telp" class="form-control form-control-user" placeholder="Telepon">
+                                    <input value="<?= set_value('no_telp'); ?>" required type="text" name="no_telp" class="form-control form-control-user" placeholder="Telepon">
                                     <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-label-group">
-                                    <select name="kwarcab" id="" class="form-control">
-                                        <option value="null" class="text-center">-- Pilih Kwarran --</option>
+                                    <select name="kwarcab" id="" class="form-control" required>
+                                        <option value="" class="text-center">-- Pilih Kwarran --</option>
                                         <?php
                                         foreach ($wilayah as $key => $data) { ?>
                                             <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
