@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-use PHPMailer\PHPMailer\src\PhpMailer;
-use PHPMailer\PHPMailer\src\SMTP;
-use PHPMailer\PHPMailer\src\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class Auth extends CI_Controller
 {
