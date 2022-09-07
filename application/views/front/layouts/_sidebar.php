@@ -5,19 +5,21 @@
          <div class="main_title2">
             <h2>Most Popular News</h2>
          </div>
-         <div class="choice_item">
-            <img class="img-fluid" src="<?= base_url("assets/uploads/berita/$popular->foto") ?>" alt="">
-            <div class="choice_text">
-               <div class="date">
-                  <a class="gad_btn" href="<?= base_url("blog/category/$popular->slug") ?>"><?= $popular->nama_kategori ?></a>
-                  <a href="#" class="float-right"><i class="fa fa-calendar" aria-hidden="true"></i><?= mediumdate_indo($popular->date) ?></a>
+         <?php foreach ($popular as $key => $data) { ?>
+            <div class="choice_item">
+               <img class="img-fluid" src="<?= base_url("assets/uploads/berita/$data->foto") ?>" alt="">
+               <div class="choice_text">
+                  <div class="date">
+                     <a class="gad_btn" href="<?= base_url("blog/category/$data->slug") ?>"><?= $data->nama_kategori ?></a>
+                     <a href="#" class="float-right"><i class="fa fa-calendar" aria-hidden="true"></i><?= mediumdate_indo($data->date) ?></a>
+                  </div>
+                  <a href="<?= base_url("blog/read/$data->seo_judul") ?>">
+                     <h4><?= $data->judul ?></h4>
+                  </a>
+                  <p><?= character_limiter($data->isi, 150) ?></p>
                </div>
-               <a href="<?= base_url("blog/read/$popular->seo_judul") ?>">
-                  <h4><?= $popular->judul ?></h4>
-               </a>
-               <p><?= character_limiter($popular->isi, 150) ?></p>
             </div>
-         </div>
+         <?php } ?>
 
          <div class="main_title2 mb-5">
             <h2>Trending Now</h2>

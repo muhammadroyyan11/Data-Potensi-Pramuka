@@ -104,7 +104,7 @@ class Berita_model extends CI_Model
         $this->db->where('berita.status', 1);
         $this->db->order_by('berita.id_berita', 'desc');
         $this->db->limit(1);
-        return $this->db->get()->row();
+        return $this->db->get()->result();
     }
 
     public function paginate($page)
