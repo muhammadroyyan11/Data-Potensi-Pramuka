@@ -150,75 +150,78 @@ class Auth extends CI_Controller
         $this->template->load('tempauth', 'auth/testing', $data);
     }
 
-    public function email($token)
+    public function email($token = null)
     {
         $post = $this->input->post(null, TRUE);
         $this->load->library('email');
 
-        $to                 = $post['email'];
-        $subject            = 'Aktivasi Akun';
-        $message            = 'Link';
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => 'mail.projectskuy.site',
+            'smtp_user' => 'pramuka@projectskuy.site',
+            'smtp_pass' => '1234Arema',
+            'smtp_port' => 587,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
 
-        $mail = new PhpMailer(true);
+        $this->email->initialize($config);
 
-        try {
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mail->isSMTP();
-            $mail->Host       = 'mail.projectskuy.site';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'pramuka@projectskuy.site'; // ubah dengan alamat email Anda
-            $mail->Password   = '1234Arema'; // ubah dengan password email Anda
-            $mail->SMTPSecure = 'tls';
-            $mail->Port       = 587;
+        $this->email->from('pramuka@projectskuy.site', 'Admin Kwarcab Cilegon');
+        $this->email->to($post['email']);
 
-            $mail->setFrom('pramuka@projectskuy.site', 'no-reply'); // ubah dengan alamat email Anda
-            $mail->addAddress($to);
-            $mail->addReplyTo('pramuka@projectskuy.site', 'no-reply'); // ubah dengan alamat email Anda
+        $this->email->subject('Account Verification');
+        $this->email->message('Testing');
 
-            // Isi Email
-            $mail->isHTML(true);
-            $mail->Subject = $subject;
-            $mail->Body    = '
-            <h3>Hallo ' . $post['email'] . ',</h3><br>
-            <p>Klik disini untuk melakukan aktivasi akun anda : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">klik disini</a> </p>
-            <br>Salam,<br>Admin Kwarcab Cilegon';
-
-            $mail->send();
-
-            // Pesan Berhasil Kirim Email/Pesan Error
-
-            set_pesan('Silahkan cek email anda untuk melakukan aktivasi');
-            return redirect('auth');
-        } catch (Exception $e) {
-            set_pesan('Gagal mengirim token aktivasi');
-            return redirect('auth');
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
         }
 
-        // $config = [
-        //     'protocol'  => 'smtp',
-        //     'smtp_host' => 'mail.projectskuy.site',
-        //     'smtp_user' => 'pramuka@porjectskuy.site',
-        //     'smtp_pass' => '1234567890',
-        //     'smtp_port' => 587,
-        //     'mailtype'  => 'html',
-        //     'charset'   => 'utf-8',
-        //     'newline'   => "\r\n"
-        // ];
 
-        // $this->email->initialize($config);
 
-        // $this->email->from('pramuka@porjectskuy.site', 'Kwarcab Cilegon');
-        // $this->email->to($post['email']);
+        // $to                 = $post['email'];
+        // $subject            = 'Aktivasi Akun';
+        // $message            = 'Link';
 
-        // $this->email->subject('Email Test');
-        // $this->email->message('Testing the email class.');
+        // $mail = new PhpMailer(true);
 
-        // if ($this->email->send()) {
-        //     return true;
-        // } else {
-        //     echo $this->email->print_debugger();
-        //     die;
+        // try {
+        //     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        //     $mail->isSMTP();
+        //     $mail->Host       = 'mail.projectskuy.site';
+        //     $mail->SMTPAuth   = true;
+        //     $mail->Username   = 'pramuka@projectskuy.site'; // ubah dengan alamat email Anda
+        //     $mail->Password   = '1234Arema'; // ubah dengan password email Anda
+        //     $mail->SMTPSecure = 'tls';
+        //     $mail->Port       = 587;
+
+        //     $mail->setFrom('pramuka@projectskuy.site', 'no-reply'); // ubah dengan alamat email Anda
+        //     $mail->addAddress($to);
+        //     $mail->addReplyTo('pramuka@projectskuy.site', 'no-reply'); // ubah dengan alamat email Anda
+
+        //     // Isi Email
+        //     $mail->isHTML(true);
+        //     $mail->Subject = $subject;
+        //     $mail->Body    = '
+        //     <h3>Hallo ' . $post['email'] . ',</h3><br>
+        //     <p>Klik disini untuk melakukan aktivasi akun anda : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">klik disini</a> </p>
+        //     <br>Salam,<br>Admin Kwarcab Cilegon';
+
+        //     $mail->send();
+
+        //     // Pesan Berhasil Kirim Email/Pesan Error
+
+        //     set_pesan('Silahkan cek email anda untuk melakukan aktivasi');
+        //     return redirect('auth');
+        // } catch (Exception $e) {
+        //     set_pesan('Gagal mengirim token aktivasi', false);
+        //     return redirect('auth');
         // }
+
     }
 
     public function verify()
