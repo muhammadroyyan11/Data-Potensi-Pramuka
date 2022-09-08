@@ -150,17 +150,17 @@ class Auth extends CI_Controller
         $this->template->load('tempauth', 'auth/testing', $data);
     }
 
-    public function email($token = null)
+    public function email($token)
     {
         $post = $this->input->post(null, TRUE);
         $this->load->library('email');
 
         $config = [
             'protocol'  => 'smtp',
-            'smtp_host' => 'mail.projectskuy.site',
+            'smtp_host' => 'ssl://mail.projectskuy.site',
             'smtp_user' => 'pramuka@projectskuy.site',
             'smtp_pass' => '1234Arema',
-            'smtp_port' => 587,
+            'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
             'newline'   => "\r\n"
@@ -172,10 +172,11 @@ class Auth extends CI_Controller
         $this->email->to($post['email']);
 
         $this->email->subject('Account Verification');
-        $this->email->message('Testing');
+        $this->email->message('Click this link to verify you account : <a href="' . base_url() . 'auth/verify?email=' . $post['email'] . '&token=' . urlencode($token) . '">Activate</a>');
 
         if ($this->email->send()) {
-            return true;
+            set_pesan('Silahkan cek email anda untuk melakukan aktivasi');
+            return redirect('auth');
         } else {
             echo $this->email->print_debugger();
             die;
