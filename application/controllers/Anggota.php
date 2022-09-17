@@ -27,12 +27,12 @@ class Anggota extends CI_Controller
 
         if (userdata('role') == 1) {
             $tes = $this->anggota->getExportWilayah();
-            var_dump($tes);
-        } elseif (userdata('role')== 2) {
+            // var_dump($tes);
+        } elseif (userdata('role') == 2) {
             $tesWil = $this->anggota->getExportWilayah(userdata('wilayah'));
-            var_dump($tesWil);
+            // var_dump($tesWil);
         }
-        
+
         $this->template->load('template', 'anggota/data', $data);
     }
 
@@ -217,15 +217,15 @@ class Anggota extends CI_Controller
             ]
         ];
         $sheet->setCellValue('A1', "DATA SISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
-        $sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
+        $sheet->mergeCells('A1:F1'); // Set Merge Cell pada kolom A1 sampai E1
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
-        $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
-        $sheet->setCellValue('B3', "Nama"); // Set kolom B3 dengan tulisan "NIS"
-        $sheet->setCellValue('C3', "No Telp"); // Set kolom C3 dengan tulisan "NAMA"
-        $sheet->setCellValue('D3', "Email"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $sheet->setCellValue('E3', "Wilayah"); // Set kolom E3 dengan tulisan "ALAMAT"
-        $sheet->setCellValue('F3', "Tess"); // Set kolom E3 dengan tulisan "ALAMAT"
+        $sheet->setCellValue('A3', "NO");
+        $sheet->setCellValue('B3', "Nama");
+        $sheet->setCellValue('C3', "No Telp");
+        $sheet->setCellValue('D3', "Email");
+        $sheet->setCellValue('E3', "Wilayah");
+        $sheet->setCellValue('F3', "Potensi");
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
         $sheet->getStyle('B3')->applyFromArray($style_col);
@@ -233,14 +233,20 @@ class Anggota extends CI_Controller
         $sheet->getStyle('D3')->applyFromArray($style_col);
         $sheet->getStyle('E3')->applyFromArray($style_col);
         $sheet->getStyle('F3')->applyFromArray($style_col);
-        // Panggil function view yang ada di Model untuk menampilkan semua data siswanya
+        // Panggil function view yang ada di Model untuk menampilkan semua data
+        // $potensi = $this->anggota->getPotensiAnggota($id)->result_array();
+        // $arr = array();
+        // foreach ($potensi as $datas) {
+        //     array_push($arr, $datas['potensi_id']);
+        // }
+
         $anggota = $this->base_model->getWhere()->result();
         if (userdata('role') == 1) {
             $tes = $this->anggota->getExportWilayah();
             var_dump($tes);
-        } elseif (userdata('role')== 2) {
+        } elseif (userdata('role') == 2) {
             $tes = $this->anggota->getExportWilayah(userdata('wilayah'));
-            var_dump($tesWil);
+            var_dump($tes);
         }
         // var_dump($anggota);
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
@@ -260,6 +266,7 @@ class Anggota extends CI_Controller
             $sheet->getStyle('D' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('E' . $numrow)->applyFromArray($style_row);
             $sheet->getStyle('E' . $numrow)->applyFromArray($style_row);
+            $sheet->getStyle('F' . $numrow)->applyFromArray($style_row);
 
             $no++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping
