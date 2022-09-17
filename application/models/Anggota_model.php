@@ -58,7 +58,7 @@ class Anggota_model extends CI_Model
         $this->db->delete('potensi_user');
     }
 
-    public function get($id)
+    public function get($id = null)
     {
         $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi');
 
@@ -66,13 +66,56 @@ class Anggota_model extends CI_Model
 
         $this->db->join('potensi', 'potensi_user.potensi_id = potensi.id_potensi', 'left');
 
-        $this->db->where('user.id_user', $id);
+        if ($id != null) {
+            $this->db->where('user.id_user', $id);
+        }
 
         $this->db->order_by('user.id_user', 'desc');
 
         $this->db->group_by('user.id_user');
 
         return $this->db->get('user')->row();
+    }
+
+    public function getExport($id = null)
+    {
+        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi');
+
+        $this->db->join('potensi_user', 'user.id_user = potensi_user.user_id', 'left');
+
+        $this->db->join('potensi', 'potensi_user.potensi_id = potensi.id_potensi', 'left');
+
+        if ($id != null) {
+            $this->db->where('user.id_user', $id);
+        }
+
+        $this->db->order_by('user.id_user', 'desc');
+
+        $this->db->group_by('user.id_user');
+
+        return $this->db->get('user')->result();
+    }
+
+    public function getExportWilayah($wilayah = null)
+    {
+        $array = ["1", "2"];
+        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi, wilayah.nama_wilayah' );
+
+        $this->db->join('potensi_user', 'user.id_user = potensi_user.user_id', 'left');
+
+        $this->db->join('wilayah', 'user.wilayah = wilayah.id_wilayah', 'left');
+
+        $this->db->join('potensi', 'potensi_user.potensi_id = potensi.id_potensi', 'left');
+
+        if ($wilayah != null) {
+            $this->db->where('user.wilayah', $wilayah);
+        }
+        $this->db->where_not_in('user.role', $array);
+        $this->db->order_by('user.id_user', 'desc');
+
+        $this->db->group_by('user.id_user');
+
+        return $this->db->get('user')->result();
     }
 
     public function getById($id)

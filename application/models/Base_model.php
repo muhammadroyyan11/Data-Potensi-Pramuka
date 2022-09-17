@@ -34,8 +34,6 @@ class Base_model extends CI_Model
 
     public function getWhere($where = null)
     {
-        // $this->db->select('*');
-        // $this->db->distinct();
         $this->db->select('*');
         $this->db->from('potensi_user');
         $this->db->join('user', 'user.id_user = potensi_user.user_id');

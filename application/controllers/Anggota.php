@@ -23,7 +23,16 @@ class Anggota extends CI_Controller
         $data['title'] = "Data Anggota";
         $data['users'] = $this->base_model->getAnggota(userdata('wilayah'))->result_array();
         $data['wilayah'] = $this->base_model->get('wilayah');
+        $anggota = $this->base_model->getWhere()->result();
 
+        if (userdata('role') == 1) {
+            $tes = $this->anggota->getExportWilayah();
+            var_dump($tes);
+        } elseif (userdata('role')== 2) {
+            $tesWil = $this->anggota->getExportWilayah(userdata('wilayah'));
+            var_dump($tesWil);
+        }
+        
         $this->template->load('template', 'anggota/data', $data);
     }
 
@@ -212,10 +221,10 @@ class Anggota extends CI_Controller
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
         $sheet->setCellValue('A3', "NO"); // Set kolom A3 dengan tulisan "NO"
-        $sheet->setCellValue('B3', "Potensi"); // Set kolom B3 dengan tulisan "NIS"
-        $sheet->setCellValue('C3', "NAMA"); // Set kolom C3 dengan tulisan "NAMA"
-        $sheet->setCellValue('D3', "JENIS KELAMIN"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-        $sheet->setCellValue('E3', "ALAMAT"); // Set kolom E3 dengan tulisan "ALAMAT"
+        $sheet->setCellValue('B3', "Nama"); // Set kolom B3 dengan tulisan "NIS"
+        $sheet->setCellValue('C3', "No Telp"); // Set kolom C3 dengan tulisan "NAMA"
+        $sheet->setCellValue('D3', "Email"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
+        $sheet->setCellValue('E3', "Wilayah"); // Set kolom E3 dengan tulisan "ALAMAT"
         $sheet->setCellValue('F3', "Tess"); // Set kolom E3 dengan tulisan "ALAMAT"
         // Apply style header yang telah kita buat tadi ke masing-masing kolom header
         $sheet->getStyle('A3')->applyFromArray($style_col);
@@ -224,17 +233,24 @@ class Anggota extends CI_Controller
         $sheet->getStyle('D3')->applyFromArray($style_col);
         $sheet->getStyle('E3')->applyFromArray($style_col);
         $sheet->getStyle('F3')->applyFromArray($style_col);
-        // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
+        // Panggil function view yang ada di Model untuk menampilkan semua data siswanya
         $anggota = $this->base_model->getWhere()->result();
+        if (userdata('role') == 1) {
+            $tes = $this->anggota->getExportWilayah();
+            var_dump($tes);
+        } elseif (userdata('role')== 2) {
+            $tes = $this->anggota->getExportWilayah(userdata('wilayah'));
+            var_dump($tesWil);
+        }
         // var_dump($anggota);
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
-        foreach ($anggota as $v => $data) { // Lakukan looping pada variabel anggota
+        foreach ($tes as $v => $data) { // Lakukan looping pada variabel anggota
             $sheet->setCellValue('A' . $numrow, $no);
-            $sheet->setCellValue('B' . $numrow, $data->nama_potensi);
-            $sheet->setCellValue('C' . $numrow, $data->nama);
-            $sheet->setCellValue('D' . $numrow, 'askd');
-            $sheet->setCellValue('E' . $numrow, 'aksd');
+            $sheet->setCellValue('B' . $numrow, $data->nama);
+            $sheet->setCellValue('C' . $numrow, $data->no_telp);
+            $sheet->setCellValue('D' . $numrow, $data->email);
+            $sheet->setCellValue('E' . $numrow, $data->nama_wilayah);
             $sheet->setCellValue('F' . $numrow, 'aksd');
 
             // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
@@ -262,6 +278,7 @@ class Anggota extends CI_Controller
         // Set judul file excel nya
         $sheet->setTitle("Laporan Data Siswa");
         // Proses file excel
+        ob_end_clean();
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment; filename="Data Anggota export ' . date('Y-m-d') . '.xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
