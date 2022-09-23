@@ -1,7 +1,7 @@
 <div class="col-md-12 col-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Edit Data Anggota Potensi</h4>
+            <h4 class="card-title">Edit Password</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -9,23 +9,6 @@
                 <?= form_open(); ?>
                 <div class="form-body">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <span>Username</span>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="position-relative has-icon-left">
-                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= (set_value('username')) ? set_value('username') : $user->username ?>">
-                                        <input type="hidden" id="username" class="form-control" name="id_user" placeholder="Masukkan username" value="<?= $user->id_user ?>">
-                                        <?= form_error('username', '<span class="text-danger small">', '</span>'); ?>
-                                        <div class="form-control-position">
-                                            <i class="feather icon-user"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-12">
                             <div class="form-group row">
                                 <div class="col-md-4">
@@ -53,6 +36,44 @@
                                         <?= form_error('password2', '<span class="text-danger small">', '</span>'); ?>
                                         <div class="form-control-position">
                                             <i class="feather icon-hash"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <?= form_close(); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Edit Data</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <?= $this->session->flashdata('pesan'); ?>
+                <?= form_open(); ?>
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <span>Username</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="position-relative has-icon-left">
+                                        <input type="text" id="username" class="form-control" name="username" placeholder="Masukkan username" value="<?= (set_value('username')) ? set_value('username') : $user->username ?>">
+                                        <input type="hidden" id="username" class="form-control" name="id_user" placeholder="Masukkan username" value="<?= $user->id_user ?>">
+                                        <?= form_error('username', '<span class="text-danger small">', '</span>'); ?>
+                                        <div class="form-control-position">
+                                            <i class="feather icon-user"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -114,10 +135,13 @@
                                 <div class="col-md-8">
                                     <div class="position-relative has-icon-left">
                                         <select name="kwarcab" id="" class="form-control">
-                                            <?php
-                                            foreach ($wilayah as $key => $data) { ?>
-                                                <option value="<?= $data->id_wilayah ?>" <?= $data->nama_wilayah == $data->nama_wilayah ? 'selected' : '' ?>><?= $data->nama_wilayah ?></option>
-                                            <?php } ?>
+                                            <?php if ($this->session->userdata('login_session')['role'] == 2) { ?>
+                                                <option value="<?= $row->id_wilayah ?>"><?= $row->nama_wilayah ?></option>
+                                                <?php } elseif ($this->session->userdata('login_session')['role'] == 1) {
+                                                foreach ($wilayah as $key => $data) { ?>
+                                                    <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
+                                            <?php }
+                                            } ?>
                                         </select>
                                         <div class="form-control-position">
                                             <i class="feather icon-map-pin"></i>

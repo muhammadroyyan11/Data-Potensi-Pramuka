@@ -38,7 +38,7 @@ class Gudep extends CI_Controller
 		$data['users'] = $this->base_model->getWhereByPotensi(1)->result_array();
 		$data['usersAdmin'] = $this->base_model->getWhereByAdmin(1)->result_array();
 		$data['wilayah'] = $this->base_model->get('wilayah');
-
+       
 		// var_dump($data['users']);
 		$this->template->load('template', 'perPotensi/data', $data);
 	}
@@ -73,7 +73,7 @@ class Gudep extends CI_Controller
                 'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
             ]
         ];
-        $sheet->setCellValue('A1', "DATA SISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+        $sheet->setCellValue('A1', "DATA ANGGOTA POTENSI GUDEP"); // Set kolom A1 dengan tulisan "DATA SISWA"
         $sheet->mergeCells('A1:F1'); // Set Merge Cell pada kolom A1 sampai E1
         $sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
         // Buat header tabel nya pada baris ke 3
@@ -96,13 +96,11 @@ class Gudep extends CI_Controller
         // foreach ($potensi as $datas) {
         //     array_push($arr, $datas['potensi_id']);
         // }
-
-        $anggota = $this->base_model->getWhere()->result();
         if (userdata('role') == 1) {
             $tes = $this->anggota->getExportWilayah();
             var_dump($tes);
         } elseif (userdata('role') == 2) {
-            $tes = $this->anggota->getExportWilayah(userdata('wilayah'));
+            $tes = $this->anggota->getExportWilayah(userdata('wilayah'), '1');
             var_dump($tes);
         }
         // var_dump($anggota);
@@ -114,7 +112,7 @@ class Gudep extends CI_Controller
             $sheet->setCellValue('C' . $numrow, $data->no_telp);
             $sheet->setCellValue('D' . $numrow, $data->email);
             $sheet->setCellValue('E' . $numrow, $data->nama_wilayah);
-            $sheet->setCellValue('F' . $numrow, 'aksd');
+            $sheet->setCellValue('F' . $numrow, 'GUDEP');
 
             // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
             $sheet->getStyle('A' . $numrow)->applyFromArray($style_row);

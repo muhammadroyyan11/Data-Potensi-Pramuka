@@ -96,11 +96,9 @@ class Anggota_model extends CI_Model
         return $this->db->get('user')->result();
     }
 
-    public function getExportWilayah($wilayah = null)
+    public function getExportWilayah($wilayah = null, $potensi = null)
     {
-        $array = ["1", "2"];
-
-        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi, wilayah.nama_wilayah' );
+        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi, wilayah.nama_wilayah');
 
         $this->db->join('potensi_user', 'user.id_user = potensi_user.user_id', 'left');
 
@@ -108,13 +106,15 @@ class Anggota_model extends CI_Model
 
         $this->db->join('potensi', 'potensi_user.potensi_id = potensi.id_potensi', 'left');
 
-        if ($wilayah != null) {
-
+        if ($wilayah != null ) {
             $this->db->where('user.wilayah', $wilayah);
-            
         }
+        
+        if ($potensi != null ) {
 
-        $this->db->where_not_in('user.role', $array);
+        $this->db->where('potensi.id_potensi', $potensi);
+
+        }
 
         $this->db->order_by('user.id_user', 'desc');
 

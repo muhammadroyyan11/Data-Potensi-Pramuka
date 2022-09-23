@@ -57,7 +57,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"><?= $title ?></h4>
-                        <a href="<?= site_url('anggota/export/') ?>" class="btn btn-success btn-flat">
+                        <a href="<?= site_url('gudep/export/') ?>" class="btn btn-success btn-flat">
                             <i class="fa fa-file-excel-o"></i> Export Excel
                         </a>
                     </div>
