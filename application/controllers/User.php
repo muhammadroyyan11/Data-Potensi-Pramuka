@@ -11,6 +11,7 @@ class User extends CI_Controller
             redirect('dashboard');
         }
         $this->load->library('form_validation');
+        $this->load->model('anggota_model', 'anggota');
         date_default_timezone_set('Asia/Jakarta');
     }
 
@@ -33,16 +34,25 @@ class User extends CI_Controller
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
             $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
             $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
-        } else {
+        } elseif($mode == 'edit'){
             $db = $this->base_model->get('user', ['id_user' => $this->input->post('id_user', true)]);
             $username = $this->input->post('username', true);
             $email = $this->input->post('email', true);
 
-            $uniq_username = $db['username'] == $username ? '' : '|is_unique[user.username]';
-            $uniq_email = $db['email'] == $email ? '' : '|is_unique[user.email]';
+            if ($this->input->post('password')) {
+                $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
+                $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
+            }
 
-            $this->form_validation->set_rules('username', 'Username', 'required|trim|alpha_numeric' . $uniq_username);
-            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $uniq_email);
+            if ($this->input->post('password2')) {
+                $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
+            }
+
+            // $uniq_username = $db['username'] == $username ? '' : '|is_unique[user.username]';
+            // $uniq_email = $db['email'] == $email ? '' : '|is_unique[user.email]';
+
+            // $this->form_validation->set_rules('username', 'Username', 'required|trim|alpha_numeric' . $uniq_username);
+            // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $uniq_email);
         }
     }
 
@@ -79,12 +89,25 @@ class User extends CI_Controller
 
     public function edit($id)
     {
-        // $id = encode_php_tags($getId);
-        $this->_validasi('edit');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|callback_username_check');
+        if($this->input->post('password')){
+            $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+                array('matches' => '%s tidak sesuai')
+            );
+        } 
+        if($this->input->post('password2')){
+            $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+                array('matches' => '%s tidak sesuai')
+            );
+        }
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit User";
-            $data['user'] = $this->base_model->get('user', ['id_user' => $id]);
+            $data['user'] = $this->anggota->get($id);
+            $data['wilayah'] = $this->base_model->get('wilayah')->result();
             $this->template->load('template', 'user/edit', $data);
         } else {
             $input = $this->input->post(null, true);
@@ -117,6 +140,18 @@ class User extends CI_Controller
         redirect('user');
     }
 
+    function username_check(){
+        $post = $this->input->post(null, TRUE);
+        $query = $this->db->query("SELECT * FROM user WHERE username = '$post[username]' AND id_user != '$post[id_user]'");
+        if($query->num_rows > 0) {
+            $this->form_validation->set_message('username_check', '{field} sudah di pakai');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    
     public function toggle($getId)
     {
         // $id = encode_php_tags($getId);
