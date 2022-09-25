@@ -114,9 +114,10 @@
                                     <div class="col-md-8">
                                         <div class="position-relative has-icon-left">
                                             <select name="kwarcab" id="" class="form-control">
+                                                <option value="<?= $user->wilayah ?>"><?= $user->nama_wilayah ?></option>
                                                 <?php
                                                 foreach ($wilayah as $key => $data) { ?>
-                                                    <option value="<?= $data->id_wilayah ?>" <?= $data->nama_wilayah == $data->nama_wilayah ? 'selected' : '' ?>><?= $data->nama_wilayah ?></option>
+                                                    <option value="<?= $data->id_wilayah ?>"><?= $data->nama_wilayah ?></option>
                                                 <?php } ?>
                                             </select>
                                             <div class="form-control-position">

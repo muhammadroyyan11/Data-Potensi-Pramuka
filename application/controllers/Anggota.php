@@ -119,15 +119,21 @@ class Anggota extends CI_Controller
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|callback_username_check');
-        if($this->input->post('password')){
+        if ($this->input->post('password')) {
             $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
-            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+            $this->form_validation->set_rules(
+                'password2',
+                'Password Confirmation',
+                'matches[password]',
                 array('matches' => '%s tidak sesuai')
             );
-        } 
-        if($this->input->post('password2')){
+        }
+        if ($this->input->post('password2')) {
             $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
-            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+            $this->form_validation->set_rules(
+                'password2',
+                'Password Confirmation',
+                'matches[password]',
                 array('matches' => '%s tidak sesuai')
             );
         }
@@ -156,14 +162,17 @@ class Anggota extends CI_Controller
 
             $this->base_model->update('user', 'id_user', $id, $input_data);
 
-            $itung = count($input['potensi']);
 
-            for ($i = 0; $i < $itung; $i++) {
-                $potensi[$i] = array(
-                    'user_id' => $input['id_user'],
-                    'potensi_id' => $this->input->post('potensi[' . $i . ']'),
-                );
-                $this->anggota->insert($potensi[$i], 'potensi_user');
+            if (userdata('role') == 2) { 
+                $itung = count($input['potensi']);
+
+                for ($i = 0; $i < $itung; $i++) {
+                    $potensi[$i] = array(
+                        'user_id' => $input['id_user'],
+                        'potensi_id' => $this->input->post('potensi[' . $i . ']'),
+                    );
+                    $this->anggota->insert($potensi[$i], 'potensi_user');
+                }
             }
 
             if ($this->db->affected_rows() > 0) {
@@ -184,6 +193,18 @@ class Anggota extends CI_Controller
             set_pesan('data gagal dihapus.', false);
         }
         redirect('anggota');
+    }
+
+    function username_check()
+    {
+        $post = $this->input->post(null, TRUE);
+        $query = $this->db->query("SELECT * FROM user WHERE username = '$post[username]' AND id_user != '$post[id_user]'");
+        if ($query->num_rows > 0) {
+            $this->form_validation->set_message('username_check', '{field} sudah di pakai');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
     public function toggle($getId)

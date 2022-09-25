@@ -116,7 +116,8 @@ class User extends CI_Controller
                 'username'      => $input['username'],
                 'email'         => $input['email'],
                 'no_telp'       => $input['no_telp'],
-                'role'          => $input['role']
+                'role'          => $input['role'],
+                'wilayah'       => $input['kwarcab']
             ];
 
             if (!empty($input['password'])) {
