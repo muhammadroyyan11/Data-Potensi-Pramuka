@@ -60,11 +60,13 @@ class Anggota_model extends CI_Model
 
     public function get($id = null)
     {
-        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi');
+        $this->db->select('user.*, potensi_user.potensi_id, potensi.nama_potensi AS nama_potensi, wilayah.nama_wilayah');
 
         $this->db->join('potensi_user', 'user.id_user = potensi_user.user_id', 'left');
 
         $this->db->join('potensi', 'potensi_user.potensi_id = potensi.id_potensi', 'left');
+
+        $this->db->join('wilayah', 'user.wilayah = wilayah.id_wilayah');
 
         if ($id != null) {
             $this->db->where('user.id_user', $id);

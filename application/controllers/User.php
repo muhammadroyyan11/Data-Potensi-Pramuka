@@ -119,6 +119,12 @@ class User extends CI_Controller
                 'role'          => $input['role']
             ];
 
+            if (!empty($input['password'])) {
+                $input_data = [
+                    'password' => password_hash($input['password'], PASSWORD_DEFAULT),
+                ];
+            }
+
             if ($this->base_model->update('user', 'id_user', $id, $input_data)) {
                 set_pesan('data berhasil diubah.');
                 redirect('user');

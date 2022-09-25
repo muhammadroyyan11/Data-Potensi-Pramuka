@@ -117,7 +117,20 @@ class Anggota extends CI_Controller
 
     public function edit($id)
     {
-        $this->_validasi('edit');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|callback_username_check');
+        if($this->input->post('password')){
+            $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+                array('matches' => '%s tidak sesuai')
+            );
+        } 
+        if($this->input->post('password2')){
+            $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+            $this->form_validation->set_rules('password2', 'Password Confirmation', 'matches[password]',
+                array('matches' => '%s tidak sesuai')
+            );
+        }
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit User";
