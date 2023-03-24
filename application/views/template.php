@@ -144,6 +144,8 @@
                     </li>
                     <li class=" navigation-header"><span>Control</span>
                     </li>
+                    <li <?= $this->uri->segment(1) == 'kartu' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('kartu') ?>"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Laporan">Design Kartu</span></a>
+                    </li>
                     <li <?= $this->uri->segment(1) == 'wilayah' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('wilayah') ?>"><i class="feather icon-map"></i><span class="menu-title" data-i18n="Laporan">Wilayah</span></a>
                     </li>
                     <li <?= $this->uri->segment(1) == 'sosmed' ? 'class="active nav-item"' : 'nav-item' ?>><a href="<?= site_url('sosmed') ?>"><i class="feather icon-facebook"></i><span class="menu-title" data-i18n="Laporan">Sosial Media</span></a>
