@@ -37,7 +37,7 @@ class Kartu extends CI_Controller
             'sosmed' => $sosmed
         );
 
-        $this->template->load('template', 'sosmed/data', $data);
+        $this->template->load('template', 'kartu/master', $data);
     }
 
 }
